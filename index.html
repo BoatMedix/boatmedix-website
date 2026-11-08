@@ -136,9 +136,9 @@ nav{background:transparent}
 .core .orb{position:relative;width:148px;height:148px;border-radius:50%;background:var(--ink);display:grid;place-items:center;color:#fff;box-shadow:0 30px 60px -24px rgba(11,31,58,.55)}
 .core .orb::before,.core .orb::after{content:"";position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(46,140,134,.22)}
 .core .orb::after{inset:-40px;border-color:rgba(46,140,134,.12)}
-.core .wave{display:flex;gap:4px;align-items:center;height:34px}
+.core .wave{display:flex;gap:4px;align-items:center;justify-content:center;height:34px}
 .core .wave i{display:block;width:4px;border-radius:2px;background:var(--shallows);height:10px;animation:wv 1.8s ease-in-out infinite}
-.core .wave i:nth-child(2){animation-delay:.15s}.core .wave i:nth-child(3){animation-delay:.3s}.core .wave i:nth-child(4){animation-delay:.45s}.core .wave i:nth-child(5){animation-delay:.6s}
+.core .wave i:nth-child(2){animation-delay:.15s}.core .wave i:nth-child(3){animation-delay:.3s}.core .wave i:nth-child(n+4){background:#FE5203}.core .wave i:nth-child(4){animation-delay:.9s}.core .wave i:nth-child(5){animation-delay:1.05s}.core .wave i:nth-child(6){animation-delay:1.2s}
 @keyframes wv{0%,100%{height:8px}50%{height:30px}}
 .core b{display:block;font:600 22px var(--display);letter-spacing:-.02em;margin-top:6px}
 .core small{display:block;font:500 12.5px var(--text);color:rgba(255,255,255,.6);margin-top:2px}
@@ -412,7 +412,7 @@ a.btn{text-decoration:none}
    <li><span class="ic" data-i="help"></span>Marine Pro Network™</li>
    <li><span class="ic" data-i="flag"></span>Tee times · Lake &amp; Links</li>
   </ul></div>
-  <div class="core"><div class="orb" id="orb"><div><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><b>Captain</b><small>thinking ahead</small></div></div>
+  <div class="core"><div class="orb" id="orb"><div><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><b>Captain</b><small>thinking ahead</small></div></div>
    <p class="cap">Every source, read together, for where you are right now.</p></div>
   <div class="out"><div class="h">A heads-up, before you ask</div><div class="cards2" id="hus">
    <div class="hu on" data-s="0,1,2"><div class="t"><span data-i="cloud"></span>Weather · Wind · Alerts</div><p>Storms are likely after 4 PM. I’d head in by 3:30, and the wind will be at your back.</p></div>
