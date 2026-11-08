@@ -12,10 +12,10 @@ nav ul a:hover,nav ul a[aria-current]{color:var(--ink)}
 .b-sm{height:42px;padding:0 18px;font-size:14.5px}
 .brand{--ih:40px;display:inline-flex;align-items:center;gap:11px;line-height:1;text-decoration:none}
 .brand .ic{height:var(--ih);width:auto;display:block;flex:none}
-.brand .tx{display:inline-flex;flex-direction:column;align-items:flex-start}
+.brand .tx{display:inline-flex;flex-direction:column;align-items:center}
 .brand .wm{height:calc(var(--ih)*.72);width:auto;display:block}
-.brand .tg{align-self:flex-start;margin-top:calc(var(--ih)*.13);padding-left:.04em;font:700 calc(var(--ih)*.265)/1 'Plus Jakarta Sans',var(--display);letter-spacing:.09em;color:var(--navy);white-space:nowrap}
-.brand .tg sup{font-size:.6em;vertical-align:top;margin-left:.15em;letter-spacing:0}
+.brand .tg{position:relative;align-self:center;margin-top:calc(var(--ih)*.13);padding-left:.09em;transform:translateX(calc(var(--ih)*-.0956));font:700 calc(var(--ih)*.265)/1 'Plus Jakarta Sans',var(--display);letter-spacing:.09em;color:var(--navy);white-space:nowrap}
+.brand .tg sup{position:absolute;left:100%;top:-.15em;font-size:.6em;margin-left:.05em;letter-spacing:0}
 .dark .brand .tg{color:var(--paper)}
 /* mobile menu */
 .menu{display:none}
