@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>BoatMedix™ on your computer — Sign in</title>
+<link rel="icon" href="../brand/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+.lg{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(1200px 600px at 70% -10%,#e3f1ee 0%,transparent 60%),var(--paper)}
+.lg form{width:min(440px,100%);background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(11,31,58,.04),0 8px 28px rgba(11,31,58,.06)}
+.lg h1{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--ink);margin-top:6px}
+.lg p{color:var(--ink-2);font-size:15px}
+.lg .eb{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lake)}
+.lg label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.lg input{height:48px;border:1px solid var(--line);border-radius:14px;padding:0 14px;font:inherit;font-size:15px;color:var(--ink)}
+.lg input:focus{outline:none;border-color:var(--lake);box-shadow:0 0 0 3px rgba(46,140,134,.15)}
+.lg button{height:48px;border:0;border-radius:24px;background:var(--ink);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.lg button[disabled]{opacity:.6;cursor:progress}
+.lg .err{color:var(--help);font-size:13px;font-weight:500;min-height:18px}
+.lg .note{font-size:13px;color:var(--ink-3)}
+.brand{--ih:40px;display:inline-flex;align-items:center;gap:11px;line-height:1;text-decoration:none}
+.brand .ic{height:var(--ih);width:auto;display:block;flex:none}
+.brand .tx{display:inline-flex;flex-direction:column;align-items:center}
+.brand .wm{height:calc(var(--ih)*.72);width:auto;display:block}
+.brand .tg{position:relative;align-self:center;margin-top:calc(var(--ih)*.13);padding-left:.09em;transform:translateX(calc(var(--ih)*-.0956));font:700 calc(var(--ih)*.265)/1 'Plus Jakarta Sans',var(--display);letter-spacing:.09em;color:var(--navy);white-space:nowrap}
+.brand .tg sup{position:absolute;left:100%;top:-.15em;font-size:.6em;margin-left:.05em;letter-spacing:0}
+</style>
+</head>
+<body>
+<div id="root">
+<main class="lg"><form id="lf" autocomplete="on">
+  <a class="brand" href="../" aria-label="BoatMedix™ — Never Boat Alone™"><img class="ic" src="../brand/icon.png" alt=""><span class="tx"><img class="wm" src="../brand/wordmark-navy.svg" alt="BoatMedix™"><span class="tg">Never Boat Alone<sup>™</sup></span></span></a>
+  <div><p class="eb">Private preview</p><h1>Sign in to BoatMedix</h1><p style="margin-top:8px">BoatMedix on your computer is in private preview. Sign in with the username and password you were given.</p></div>
+  <label>Username<input id="u" name="username" autocomplete="username" required autocapitalize="none" spellcheck="false"></label>
+  <label>Password<input id="p" name="password" type="password" autocomplete="current-password" required></label>
+  <div class="err" id="e" role="alert"></div>
+  <button id="b" type="submit">Sign in</button>
+  <p class="note">Demonstration. BoatMedix is coming soon; no payments are active.</p>
+</form></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="../icons.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="payload.js"></script>
+<script>
+(() => {
+  const P0 = window.BMX_PAYLOAD, AD = new TextEncoder().encode('boatmedix-desktop-v1');
+  const d64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const e64 = b => btoa(String.fromCharCode(...new Uint8Array(b)));
+  const SK = 'bmx-desktop-key';
+  const ss = { get(){ try { return sessionStorage.getItem(SK); } catch { return null; } }, set(v){ try { sessionStorage.setItem(SK, v); } catch {} }, del(){ try { sessionStorage.removeItem(SK); } catch {} } };
+  window.BMX_LOCK = () => { ss.del(); location.reload(); };
+  async function derive(user, pass){
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveBits']);
+    const salt = new Uint8Array([...d64(P0.salt), ...new TextEncoder().encode(user.trim().toLowerCase())]);
+    return crypto.subtle.deriveBits({ name:'PBKDF2', hash:'SHA-256', salt, iterations:P0.iter }, base, 256);
+  }
+  async function open(raw){
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:d64(P0.iv), additionalData:AD }, key, d64(P0.ct));
+    const { css, js } = JSON.parse(new TextDecoder().decode(pt));
+    const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+    document.title = 'BoatMedix™ on your computer';
+    const sc = document.createElement('script'); sc.textContent = js; document.body.appendChild(sc);
+  }
+  const saved = ss.get();
+  if (saved) open(d64(saved)).catch(() => ss.del());
+  document.getElementById('lf').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const b = document.getElementById('b'), e = document.getElementById('e');
+    e.textContent = ''; b.disabled = true; b.textContent = 'Signing in…';
+    try {
+      const raw = await derive(document.getElementById('u').value, document.getElementById('p').value);
+      await open(raw); ss.set(e64(raw));
+    } catch {
+      e.textContent = 'That username and password didn’t match. Try again.';
+      b.disabled = false; b.textContent = 'Sign in';
+    }
+  });
+})();
+</script>
+</body>
+</html>

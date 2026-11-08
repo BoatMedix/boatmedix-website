@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /phone.html
+Disallow: /desktop/
 Sitemap: https://www.boatmedix.com/sitemap.xml
