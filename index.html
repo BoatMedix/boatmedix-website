@@ -366,12 +366,12 @@ a.btn{text-decoration:none}
 
 <section class="hero" aria-label="BoatMedix film: a day on the water">
  <div class="frame" id="frame">
-  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 4 minutes 5 seconds"></video>
+  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 1 minute 25 seconds"></video>
   <div class="edge" aria-hidden="true"></div>
   <div class="ctl">
    <button class="b sound" id="snd" type="button" aria-pressed="false"><svg id="sico" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span id="slbl2">Watch with sound</span></button>
    <button class="b" id="pause" type="button" aria-pressed="false"><svg id="pico" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span id="plbl">Pause</span></button>
-   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="245" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 4:05</span></div>
+   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="85" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 1:25</span></div>
   </div>
  </div>
  <div class="copy">
@@ -516,8 +516,8 @@ snd.onclick=withSound;snd2.onclick=withSound;
 let idleT=0;function idle(){clearTimeout(idleT);frame.classList.remove('hide');if(!v.muted&&!v.paused)idleT=setTimeout(()=>frame.classList.add('hide'),2800)}
 frame.addEventListener('mousemove',idle);frame.addEventListener('touchstart',idle,{passive:true});v.addEventListener('volumechange',idle);v.addEventListener('pause',idle);v.addEventListener('play',idle);
 v.addEventListener('ended',()=>{v.muted=true;v.loop=true;snd.classList.remove('on');slbl.textContent='Watch with sound';snd2.textContent='Watch with sound';v.play().catch(()=>{})});
-v.addEventListener('timeupdate',()=>{const d=v.duration||220.6;bar.style.width=(v.currentTime/d*100).toFixed(2)+'%';tm.textContent=fmt(v.currentTime)+' / '+fmt(d);prog.setAttribute('aria-valuenow',Math.round(v.currentTime))});
-const seek=x=>{const r=prog.getBoundingClientRect();v.currentTime=Math.max(0,Math.min(1,(x-r.left)/r.width))*(v.duration||220.6)};
+v.addEventListener('timeupdate',()=>{const d=v.duration||85.1;bar.style.width=(v.currentTime/d*100).toFixed(2)+'%';tm.textContent=fmt(v.currentTime)+' / '+fmt(d);prog.setAttribute('aria-valuenow',Math.round(v.currentTime))});
+const seek=x=>{const r=prog.getBoundingClientRect();v.currentTime=Math.max(0,Math.min(1,(x-r.left)/r.width))*(v.duration||85.1)};
 prog.addEventListener('click',e=>seek(e.clientX));prog.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){v.currentTime+=5;e.preventDefault()}if(e.key==='ArrowLeft'){v.currentTime-=5;e.preventDefault()}});
 new IntersectionObserver(e=>{if(!userPaused){e[0].isIntersecting?v.play().catch(()=>{}):v.pause()}},{threshold:.2}).observe(frame);
 })();
