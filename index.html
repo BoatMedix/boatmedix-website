@@ -123,6 +123,9 @@ nav{background:transparent}
 .flow svg.wires path{fill:none;stroke:rgba(46,140,134,.16);stroke-width:1.25;transition:stroke .6s ease}
 .flow svg.wires path.hot{stroke:rgba(46,140,134,.55)}
 .flow svg.wires circle{fill:var(--lake)}
+.flow svg.wires path.o{stroke:rgba(254,82,3,.16)}
+.flow svg.wires path.o.hot{stroke:rgba(254,82,3,.6)}
+.flow svg.wires circle.o{fill:#FE5203}
 .src ul{list-style:none;display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
 .src li{display:flex;align-items:center;gap:12px;padding:9px 14px 9px 9px;border-radius:14px;border:1px solid var(--line);background:var(--paper);font:500 14.5px var(--text);color:var(--ink-2);transition:background .5s ease,color .5s ease,border-color .5s ease}
 .src li .ic{width:30px;height:30px;border-radius:9px;background:var(--white);display:grid;place-items:center;color:var(--depth);flex:none;transition:background .5s ease,color .5s ease}
@@ -363,12 +366,12 @@ a.btn{text-decoration:none}
 
 <section class="hero" aria-label="BoatMedix film: a day on the water">
  <div class="frame" id="frame">
-  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 3 minutes 41 seconds"></video>
+  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 4 minutes 5 seconds"></video>
   <div class="edge" aria-hidden="true"></div>
   <div class="ctl">
    <button class="b sound" id="snd" type="button" aria-pressed="false"><svg id="sico" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span id="slbl2">Watch with sound</span></button>
    <button class="b" id="pause" type="button" aria-pressed="false"><svg id="pico" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span id="plbl">Pause</span></button>
-   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="221" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 3:41</span></div>
+   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="245" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 4:05</span></div>
   </div>
  </div>
  <div class="copy">
@@ -569,16 +572,17 @@ function build(){svg.innerHTML='';inP=[];outP=[];dots=[];if(getComputedStyle(svg
   const p=document.createElementNS(NS,'path');
   if(mob){const gx=x-12,sb=flow.querySelector('.src').getBoundingClientRect().bottom-f.top+14;p.setAttribute('d',`M${cx},${ob} L${cx},${sb-12} Q${cx},${sb} ${cx-12},${sb} L${gx+12},${sb} Q${gx},${sb} ${gx},${sb+12} L${gx},${y-14} Q${gx},${y} ${x},${y}`)}
   else p.setAttribute('d',`M${sx},${sy} C${sx+(x-sx)*.4},${sy} ${x-(x-sx)*.5},${y} ${x},${y}`);
-  svg.appendChild(p);outP.push(p)});
- const c=document.createElementNS(NS,'circle');c.setAttribute('r','3');svg.appendChild(c);dots.push({c,out:true});setAct(act,true)}
+  p.setAttribute('class','o');svg.appendChild(p);const j=outP.length;outP.push(p);
+  for(let k=0;k<2;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('r','2.6');c.setAttribute('class','o');c.style.opacity=0;svg.appendChild(c);dots.push({c,p,j,o:true,off:(j*.23+k*.5)%1})}});
+ setAct(act,true)}
 function setAct(n,silent){act=n;const s=hus[n].dataset.s.split(',').map(Number);
  hus.forEach((h,i)=>h.classList.toggle('on',i===n));srcs.forEach((li,i)=>li.classList.toggle('hot',s.includes(i)));
- inP.forEach((p,i)=>p.classList.toggle('hot',s.includes(i)));outP.forEach((p,i)=>p.classList.toggle('hot',i===n))}
+ inP.forEach((p,i)=>p.classList.toggle('hot',s.includes(i)));outP.forEach((p,i)=>{p.classList.toggle('hot',i===n);p.classList.add('o')})}
 let t0=performance.now();
 function loop(now){requestAnimationFrame(loop);if(!vis||reduce)return;const t=(now-t0)/1000;
  if(now-lastSw>4600){lastSw=now;if(t>1)setAct((act+1)%hus.length)}
  const s=hus[act].dataset.s.split(',').map(Number);
- dots.forEach(d=>{if(d.out){const p=outP[act];if(!p)return;const L=p.getTotalLength(),u=((now-lastSw)/1400);if(u>1){d.c.style.opacity=0;return}const pt=p.getPointAtLength(L*u);d.c.setAttribute('cx',pt.x);d.c.setAttribute('cy',pt.y);d.c.style.opacity=Math.sin(Math.PI*u);return}
+ dots.forEach(d=>{if(d.o){const L=d.p.getTotalLength(),hot=d.j===act,u=(t*(hot?.42:.16)+d.off)%1,pt=d.p.getPointAtLength(L*u);d.c.setAttribute('cx',pt.x);d.c.setAttribute('cy',pt.y);d.c.style.opacity=(hot?.95:.35)*Math.sin(Math.PI*u);return}
   const L=d.p.getTotalLength(),hot=s.includes(d.i),sp=hot?.42:.16,u=(t*sp+d.off)%1,pt=d.p.getPointAtLength(L*u);
   d.c.setAttribute('cx',pt.x);d.c.setAttribute('cy',pt.y);d.c.style.opacity=(hot?.95:.35)*Math.sin(Math.PI*u)})}
 hus.forEach((h,i)=>h.addEventListener('mouseenter',()=>{lastSw=performance.now();setAct(i)}));
