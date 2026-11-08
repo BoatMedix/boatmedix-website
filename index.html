@@ -1,0 +1,304 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BoatMedix™ — A day on the water, with Captain</title><meta name="description" content="Weather, places, events and marine help, together in one app with Captain, the voice of BoatMedix. Watch A Day on the Water. Never Boat Alone™."><link rel="canonical" href="https://www.boatmedix.com/"><meta property="og:site_name" content="BoatMedix"><meta property="og:type" content="website"><meta property="og:title" content="BoatMedix™ — A day on the water, with Captain"><meta property="og:description" content="Weather, places, events and marine help, together in one app with Captain, the voice of BoatMedix. Watch A Day on the Water. Never Boat Alone™."><meta property="og:url" content="https://www.boatmedix.com/"><meta property="og:image" content="https://www.boatmedix.com/media/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Friends on a pontoon boat at golden hour on Buckeye Lake"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="BoatMedix™ — A day on the water, with Captain"><meta name="twitter:description" content="Weather, places, events and marine help, together in one app with Captain, the voice of BoatMedix. Watch A Day on the Water. Never Boat Alone™."><meta name="twitter:image" content="https://www.boatmedix.com/media/og-image.jpg"><meta name="theme-color" content="#F7F5F0"><link rel="apple-touch-icon" href="brand/icon.png"><link rel="icon" href="brand/icon.png"><link rel="preload" as="image" href="media/film-poster.jpg"><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+html,body{background:#F7F5F0} body{min-width:0;overflow-x:clip}
+.wrap{width:1240px;margin:0 auto}
+nav{height:84px;display:flex;align-items:center;justify-content:space-between;width:1240px;margin:0 auto;position:relative;z-index:5}
+nav img{height:40px}
+nav ul{display:flex;gap:36px;list-style:none;font:500 15px var(--text);color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font:600 15px var(--display);letter-spacing:-.005em}
+.btn svg{width:18px;height:18px}
+.b-ink{background:var(--navy);color:#fff}.b-ghost{background:rgba(255,255,255,.7);color:var(--ink);border:1px solid var(--line)}
+.b-sm{height:42px;padding:0 18px;font-size:14.5px}
+/* hero — the film */
+.hero{position:relative;padding:12px 0 0}
+.hero .frame{position:relative;width:min(100vw - 48px, calc((100svh - 84px - 150px) * 16 / 9), 1760px);aspect-ratio:16/9;margin:0 auto;border-radius:28px;overflow:hidden;background:var(--paper);box-shadow:0 40px 90px -40px rgba(1,40,81,.28),0 0 0 1px rgba(1,40,81,.06)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:var(--paper)}
+.hero .edge{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(11,31,58,.07);pointer-events:none}
+.hero .ctl{position:absolute;left:0;right:0;bottom:0;padding:0 22px 18px;display:flex;align-items:center;gap:12px;opacity:1;transition:opacity .5s ease,transform .5s ease}
+.hero .frame.hide .ctl{opacity:0;transform:translateY(6px)}
+.hero .frame.hide:hover .ctl,.hero .frame.hide:focus-within .ctl{opacity:1;transform:none}
+.hero .ctl .b{display:inline-flex;align-items:center;gap:9px;height:40px;padding:0 16px 0 12px;border-radius:999px;font:500 13.5px var(--text);color:#fff;background:rgba(11,31,58,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);cursor:pointer}
+.hero .ctl .b svg{width:16px;height:16px;fill:currentColor}
+.hero .ctl .b.sound{background:rgba(46,140,134,.95);border-color:transparent}
+.hero .ctl .b.sound.on{background:rgba(11,31,58,.62);border-color:rgba(255,255,255,.14)}
+.hero .ctl .b:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.hero .tray{flex:1;display:flex;align-items:center;gap:14px;height:40px;padding:0 18px;border-radius:999px;background:rgba(11,31,58,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14)}
+.hero .prog{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);position:relative;overflow:hidden;cursor:pointer}
+.hero .prog i{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:2px}
+.hero .ctl .num{font:500 12.5px var(--text);color:#fff;letter-spacing:.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hero .copy{width:1240px;margin:0 auto;padding:36px 0 0;display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:end}
+.hero h1{font:600 64px/0.98 var(--display);letter-spacing:-.04em;color:var(--ink);max-width:760px}
+.hero p.lead{font:400 19px/1.5 var(--text);color:var(--ink-2);margin:0 0 6px}
+.hero .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}.hero .cta a,.hero .cta a:hover{text-decoration:none}
+.hero .copy>*{animation:rise 1.2s cubic-bezier(.2,.7,.2,1) both}.hero .copy>div{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+nav{background:transparent}
+@media (max-width:820px){
+ nav{width:auto;padding:0 20px;height:72px} nav ul{display:none} nav img{height:32px} .brand{--ih:34px}
+ .hero{padding-top:4px}
+ .hero .frame{width:100vw;border-radius:0;box-shadow:none;overflow:visible;margin-bottom:52px}
+ .hero .ctl{position:absolute;top:100%;bottom:auto;padding:12px 20px 0;gap:8px;opacity:1!important;transform:none!important}
+ .hero .ctl .b{height:38px;padding:0 13px 0 11px;font-size:12.5px;background:var(--navy);border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+ .hero .ctl .b.sound.on{background:var(--navy)}
+ .hero .tray{height:38px;padding:0 14px;background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none} .hero .prog{background:rgba(1,40,81,.15)} .hero .prog i{background:var(--navy)}
+ .hero .ctl .num{display:none}
+ .hero .copy{width:auto;padding:28px 24px 0;grid-template-columns:1fr;gap:18px}
+ .hero h1{font-size:clamp(40px,11vw,56px)}
+ .hero p.lead{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.hero .copy>*{animation:none}}
+/* tagline */
+.tag{padding:120px 0 40px;text-align:center}
+.tag h2{font:600 64px/1.02 var(--display);letter-spacing:-.04em}
+.tag h2 span{color:var(--lake)}
+.tag p{font:400 20px/1.5 var(--text);color:var(--ink-2);max-width:620px;margin:22px auto 0}
+/* demo */
+.demo{padding:60px 0 120px}
+.stage{display:grid;grid-template-columns:330px 1fr 330px;align-items:center;gap:40px;background:var(--white);border-radius:48px;padding:56px 56px;border:1px solid var(--line);position:relative}
+.tabs{display:flex;flex-direction:column;gap:6px}
+.tab{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;font:600 17px var(--display);letter-spacing:-.01em;color:var(--ink-2)}
+.tab .ic{width:40px;height:40px;border-radius:13px;background:var(--mist);display:grid;place-items:center;color:var(--depth)}
+.tab .ic svg{width:20px;height:20px}
+.tab.on{background:var(--ink);color:#fff}.tab.on .ic{background:rgba(143,211,200,.18);color:var(--shallows)}
+.phone{width:300px;height:650px;border-radius:52px;background:#0B1F3A;padding:9px;margin:0 auto;box-shadow:0 40px 80px -30px rgba(11,31,58,.35),0 0 0 1px rgba(11,31,58,.08)}
+.phone .s{width:282px;height:632px;border-radius:44px;overflow:hidden;position:relative}
+.phone iframe{width:393px;height:852px;border:0;transform:scale(.7176);transform-origin:0 0}
+.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:88px;height:26px;border-radius:20px;background:#0B1F3A;z-index:3}
+.explain h3{font:600 36px/1.08 var(--display);letter-spacing:-.03em}
+.explain p{font:400 17px/1.55 var(--text);color:var(--ink-2);margin-top:16px}
+.explain ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px;font:500 15.5px var(--text)}
+.explain li{display:flex;gap:10px;align-items:center}.explain li svg{width:18px;height:18px;color:var(--lake)}
+.badge{position:absolute;top:24px;right:28px;font:600 11px var(--text);letter-spacing:.1em;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;display:flex;gap:7px;align-items:center}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--sun)}
+/* story module: 20-second product story */
+.story{padding:40px 0 130px}
+.sstage{position:relative;display:grid;grid-template-columns:300px 300px 1fr;gap:64px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:48px;padding:56px 64px;overflow:hidden;min-height:762px}
+.sunbg{position:absolute;inset:0;background:url(media/hero-poster-desktop.jpg) 70% 50%/cover;opacity:0;pointer-events:none}
+.sunbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,245,240,.55),rgba(247,245,240,.05) 40%,rgba(247,245,240,.6) 75%)}
+.sstage>*:not(.sunbg){position:relative}
+.chap{list-style:none;display:flex;flex-direction:column;gap:4px}
+.chap button{all:unset;cursor:pointer;display:grid;grid-template-columns:34px 1fr;align-items:center;row-gap:10px;width:100%;padding:14px 16px;border-radius:18px;font:600 17px var(--display);letter-spacing:-.01em;color:var(--ink-2);box-sizing:border-box}
+.chap button .n{font:600 12px var(--text);color:var(--ink-3);letter-spacing:.04em}
+.chap button .pr{grid-column:1/3;height:3px;border-radius:2px;background:rgba(11,31,58,.08);overflow:hidden}
+.chap button .pr i{display:block;height:100%;width:0;background:var(--lake)}
+.chap button.on{color:var(--ink);background:rgba(238,242,239,.85)}
+.chap button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.scap .k{font:600 13px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--lake)}
+.scap h3{font:600 44px/1.04 var(--display);letter-spacing:-.035em;margin-top:14px;max-width:440px}
+.scap p{font:400 18px/1.55 var(--text);color:var(--ink-2);margin-top:18px;max-width:420px}
+.scap .lbl{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.scap .lbl span{font:600 11px var(--text);letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 10px;background:var(--mist);color:var(--depth)}
+.scap .lbl span.s{background:var(--sun-soft);color:#7A5A10}
+.scap>*{transition:opacity .45s ease,transform .45s ease}.scap.sw>*{opacity:0;transform:translateY(8px)}
+#story .phone iframe{height:881px}
+.sbar{display:flex;align-items:center;gap:18px;margin-top:18px;padding:0 8px}
+.sbtn{all:unset;cursor:pointer;display:flex;gap:9px;align-items:center;font:500 13.5px var(--text);color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px 7px 8px}
+.sbtn i{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}.sbtn svg{width:10px;height:10px;fill:currentColor}
+.sbtn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.snote{display:flex;gap:8px;align-items:center;font:400 13.5px var(--text);color:var(--ink-2)}.snote i{width:7px;height:7px;border-radius:50%;background:var(--sun);flex:none}
+.stime{margin-left:auto;font:500 13px var(--text);color:var(--ink-3)}
+@media (max-width:820px){
+ .tag.wrap,.story.wrap{width:auto;padding-left:16px;padding-right:16px}
+ .tag{padding-top:80px}.tag h2{font-size:40px}.tag p{font-size:17px}
+ .sstage{grid-template-columns:1fr;gap:22px;padding:22px 16px 32px;border-radius:32px;min-height:0}
+ .chap{flex-direction:row;gap:4px;order:0}
+ .chap button{grid-template-columns:1fr;padding:6px 2px;font-size:11.5px;row-gap:6px;text-align:center;background:none!important}
+ .chap button .n{display:none}.chap button .pr{grid-column:1}
+ .scap{order:1;text-align:center;min-height:200px}.scap h3{font-size:30px;margin:10px auto 0}.scap p{font-size:15.5px;margin:12px auto 0}.scap .lbl{justify-content:center}
+ .sstage .phone{order:2}
+ .sbar{flex-wrap:wrap;gap:10px}.snote{order:3;width:100%;font-size:12.5px}
+}
+/* boaters */
+.who{padding:20px 0 130px}
+.who .k{font:600 13px var(--text);letter-spacing:.14em;color:var(--lake);text-transform:uppercase}
+.who h2{font:600 52px/1.05 var(--display);letter-spacing:-.035em;margin-top:16px;max-width:760px}
+.names{margin-top:48px;border-top:1px solid var(--line)}
+.nm{display:grid;grid-template-columns:1fr 1fr;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line)}
+.nm b{font:500 40px var(--display);letter-spacing:-.03em}
+.nm span{font:400 18px var(--text);color:var(--ink-2)}
+.nm.on b{color:var(--lake)}
+/* plans */
+.plans{background:var(--ink);color:#fff;padding:110px 0}
+.plans .top{display:flex;justify-content:space-between;align-items:flex-end}
+.plans h2{font:600 56px/1.04 var(--display);letter-spacing:-.035em;max-width:620px}
+.plans .top p{font:400 18px/1.5 var(--text);color:rgba(255,255,255,.65);max-width:380px}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:56px}
+.card{border-radius:32px;padding:32px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.card.feat{background:#F7F5F0;color:var(--ink)}
+.card h4{font:600 22px var(--display);letter-spacing:-.015em}
+.card .pr{font:600 44px var(--display);letter-spacing:-.04em;margin:18px 0 4px}.card .pr small{font:500 15px var(--text);opacity:.6;letter-spacing:0}
+.card p{font:400 15px/1.5 var(--text);opacity:.7}
+.card ul{list-style:none;margin:22px 0 28px;display:flex;flex-direction:column;gap:10px;font:500 15px var(--text)}
+.card li{display:flex;gap:10px;align-items:center}.card li svg{width:17px;height:17px;color:var(--shallows)}.card.feat li svg{color:var(--lake)}
+.card .btn{width:100%;justify-content:center}
+.card .b-line{border:1px solid rgba(255,255,255,.25);color:#fff}
+.soon{display:inline-block;font:600 11px var(--text);letter-spacing:.1em;border-radius:999px;padding:5px 10px;background:var(--sun-soft);color:#7A5A00;margin-left:8px;vertical-align:middle}
+.stores{display:flex;gap:16px;margin-top:40px;align-items:center;font:400 14px var(--text);color:rgba(255,255,255,.55)}
+.store{height:46px;padding:0 18px;border-radius:14px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;gap:10px;color:#fff;font:600 14px var(--display)}
+/* founder + footer */
+.founder{padding:120px 0;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+.founder .k{font:600 13px var(--text);letter-spacing:.14em;color:var(--lake);text-transform:uppercase}
+.founder blockquote{font:500 38px/1.2 var(--display);letter-spacing:-.025em}
+.founder p{font:400 17px/1.6 var(--text);color:var(--ink-2);margin-top:22px;max-width:560px}
+.founder a{display:inline-flex;gap:8px;align-items:center;margin-top:22px;font:600 15px var(--display);color:var(--lake)}.founder a svg{width:17px;height:17px}
+footer{border-top:1px solid var(--line);padding:40px 0 56px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;font:400 14px var(--text);color:var(--ink-2)}
+footer img{height:36px}
+/* brand: icon + wordmark lockup with slogan (matches concept card) */
+.brand{--ih:40px;display:inline-flex;align-items:center;gap:11px;line-height:1;text-decoration:none}
+.brand .ic{height:var(--ih);width:auto;display:block;flex:none}
+.brand .tx{display:inline-flex;flex-direction:column;align-items:flex-start}
+.brand .wm{height:calc(var(--ih)*.72);width:auto;display:block}
+.brand .tg{align-self:flex-start;margin-top:calc(var(--ih)*.13);padding-left:.04em;font:700 calc(var(--ih)*.265)/1 'Plus Jakarta Sans',var(--display);letter-spacing:.09em;color:var(--navy);white-space:nowrap}
+.brand .tg sup{font-size:.6em;vertical-align:top;margin-left:.15em;letter-spacing:0}
+footer .brand{--ih:36px}
+nav ul a{color:inherit;text-decoration:none}nav ul a:hover{color:var(--ink)}nav a.btn{text-decoration:none}footer .links{display:flex;gap:18px}footer .links a{color:inherit;text-decoration:none}footer .links a:hover{color:var(--ink)}.founder a{text-decoration:none}
+.menu{display:none}.mnav{display:none}
+@media (max-width:820px){nav .b-sm{display:none}
+ .menu{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.7);font:600 14px var(--display);color:var(--ink);cursor:pointer}
+ .menu svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+ .mnav.open{display:block;position:absolute;left:12px;right:12px;top:76px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:12px;z-index:50;box-shadow:0 30px 60px -20px rgba(11,31,58,.25)}
+ .mnav a{display:block;padding:14px 16px;border-radius:14px;font:600 17px var(--display);color:var(--ink);text-decoration:none}
+ .mnav a[aria-current]{background:var(--mist)}.mnav .btn{width:100%;justify-content:center;margin-top:6px}
+ footer .wrap{flex-direction:column;align-items:flex-start;gap:18px}footer .links{flex-wrap:wrap;gap:12px 16px}}
+
+@media (max-width:820px){
+ .wrap{width:auto}
+ .who.wrap,.founder.wrap,.plans .wrap,footer .wrap{width:auto;padding-left:20px;padding-right:20px}
+ .who{padding:10px 0 80px}.who h2{font-size:34px}.names{margin-top:28px}
+ .nm{grid-template-columns:1fr;gap:4px;padding:16px 0}.nm b{font-size:26px}.nm span{font-size:15px}
+ .plans{padding:72px 0}.plans .top{flex-direction:column;align-items:flex-start;gap:16px}.plans h2{font-size:36px}.plans .top p{font-size:16px}
+ .cards{grid-template-columns:1fr;gap:14px;margin-top:32px}.card{padding:26px;border-radius:26px}.card .pr{font-size:36px}
+ .stores{flex-wrap:wrap;gap:10px;margin-top:28px}
+ .founder{grid-template-columns:1fr;gap:18px;padding:72px 0}.founder blockquote{font-size:26px}.founder p{font-size:16px}
+ .hero .copy h1{max-width:none}
+}
+@media (max-width:1300px) and (min-width:821px){
+ .wrap,nav,.hero .copy{width:min(1240px,100vw - 64px)}
+ .stage{grid-template-columns:260px 1fr 260px;padding:40px}
+ .sstage{grid-template-columns:260px 300px 1fr;gap:36px;padding:40px}
+}
+footer .legal{width:1240px;margin:28px auto 0;padding-top:22px;border-top:1px solid var(--line);display:grid;gap:8px;font:400 12.5px/1.55 var(--text);color:var(--ink-3)}
+@media (max-width:820px){footer .legal{width:auto;padding-left:20px;padding-right:20px}}
+@media (max-width:1300px) and (min-width:821px){footer .legal{width:min(1240px,100vw - 64px)}}
+</style></head><body>
+<nav><a class="brand" href="index.html" aria-label="BoatMedix™ — Never Boat Alone™"><img class="ic" src="brand/icon.png" alt=""><span class="tx"><img class="wm" src="brand/wordmark-navy.svg" alt="BoatMedix™"><span class="tg">Never Boat Alone<sup>™</sup></span></span></a>
+<ul><li><a href="index.html" aria-current="page" style="color:var(--ink)">Explore BoatMedix</a></li><li><a href="boaters.html">For Boaters</a></li><li><a href="dealers.html">For Dealers</a></li><li><a href="story.html">Our Story</a></li></ul>
+<a class="btn b-ink b-sm" href="get.html">Get BoatMedix</a><button class="menu" aria-expanded="false" aria-controls="mnav">Menu <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><div class="mnav" id="mnav"><a href="index.html" aria-current="page">Explore BoatMedix</a><a href="boaters.html">For Boaters</a><a href="dealers.html">For Dealers</a><a href="story.html">Our Story</a><a class="btn b-ink" href="get.html">Get BoatMedix</a></div></nav>
+
+<section class="hero" aria-label="BoatMedix film: a day on the water">
+ <div class="frame" id="frame">
+  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 3 minutes 36 seconds"></video>
+  <div class="edge" aria-hidden="true"></div>
+  <div class="ctl">
+   <button class="b sound" id="snd" type="button" aria-pressed="false"><svg id="sico" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span id="slbl2">Watch with sound</span></button>
+   <button class="b" id="pause" type="button" aria-pressed="false"><svg id="pico" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span id="plbl">Pause</span></button>
+   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="217" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 3:36</span></div>
+  </div>
+ </div>
+ <div class="copy">
+  <h1>A day on the water, with Captain.</h1>
+  <div><p class="lead">Dinner by boat, a lake story, a heads-up about debris ahead, a playlist for the ride, where the fish are biting, and a Marine Pro Network™ mechanic on a video call when the engine quits. One app, one voice, from the first question to the ride home.</p>
+  <div class="cta"><a class="btn b-ink" href="get.html">Get BoatMedix</a><button class="btn b-ghost" id="snd2" type="button">Watch with sound</button></div></div>
+ </div>
+</section>
+
+<section class="tag wrap"><h2>Everything boating.<br><span>Finally together.</span></h2>
+<p>The weather. The places. The music. The maps. The answers. All in one place.</p></section>
+
+<section class="story wrap" id="story" aria-label="How BoatMedix works: a 20-second story">
+ <div class="sstage" id="sstage">
+  <div class="sunbg" id="sunbg" aria-hidden="true"></div>
+  <ol class="chap" id="chap"></ol>
+  <div class="phone"><div class="s"><span class="island"></span><iframe id="pf" src="phone.html" title="BoatMedix app concept with sample data" tabindex="-1" aria-hidden="true" loading="lazy"></iframe></div></div>
+  <div class="scap" aria-live="polite"><div class="k" id="ck"></div><h3 id="ch"></h3><p id="cp"></p><div class="lbl" id="cl"></div></div>
+ </div>
+ <div class="sbar"><button class="sbtn" id="splay" type="button"><i><svg viewBox="0 0 10 10" id="sico"><rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/></svg></i><span id="slbl">Pause</span></button>
+ <span class="snote"><i></i>Design concept with sample data. Shows how BoatMedix is meant to work; not every feature shown is live yet.</span><span class="stime num" id="stime">0:00 / 0:20</span></div>
+</section>
+
+<section class="who wrap"><div class="k">For every kind of boater</div><h2>From your first boat to your fortieth summer.</h2>
+ <div class="names">
+  <div class="nm"><b>Sailors</b><span>Wind you can plan around</span></div>
+  <div class="nm on"><b>Anglers</b><span>Sunrise conditions, before you wake up</span></div>
+  <div class="nm"><b>Pontoon owners</b><span>Sandbars, restaurants and afternoons with friends</span></div>
+  <div class="nm"><b>Cruisers & watersports</b><span>Fuel, docks and places worth the trip</span></div>
+  <div class="nm"><b>First-time boaters</b><span>Answers, any hour of the weekend</span></div>
+ </div></section>
+
+<section class="plans"><div class="wrap">
+ <div class="top"><h2>One BoatMedix account. Wherever you sign in.</h2><p>Start free. Upgrade on the web, iPhone or Android when plans open.</p></div>
+ <div class="cards">
+  <div class="card"><h4>Free</h4><div class="pr">$0</div><p>The essentials for every day on the water.</p>
+   <ul><li><span data-i="check"></span>Conditions & map</li><li><span data-i="check"></span>Find Fuel & Marine Pro Network™</li><li><span data-i="check"></span>Nearby places</li></ul><span class="btn b-line">Download the app</span></div>
+  <div class="card feat"><h4>BoatMedix Plus <span class="soon">COMING SOON</span></h4><div class="pr">—<small> pricing to come</small></div><p>Plan My Day, Captain and the full experience.</p>
+   <ul><li><span data-i="check"></span>Plan My Day</li><li><span data-i="check"></span>Ask Captain, by voice</li><li><span data-i="check"></span>Playlists & Captain’s Lake Stories™</li></ul><span class="btn b-ink">Notify me</span></div>
+  <div class="card"><h4>For Dealers</h4><div class="pr" style="font-size:32px;margin:26px 0 12px">Partner with us</div><p>Welcome every new owner with BoatMedix from day one.</p>
+   <ul><li><span data-i="check"></span>Branded onboarding</li><li><span data-i="check"></span>Owner resources</li><li><span data-i="check"></span>Service connections</li></ul><span class="btn b-line">Talk to us</span></div>
+ </div>
+ <div class="stores"><span class="store">App Store</span><span class="store">Google Play</span><span>Web subscriptions shown for design only — not active.</span></div>
+</div></section>
+
+<section class="founder wrap"><div class="k">Our story</div>
+ <div><blockquote>“The questions don’t stop at five o’clock. So I started building the app I wished already existed.”</blockquote>
+ <p>BoatMedix comes from a life around boats and a family in the marine industry. Not to replace the joy of boating — to make more room for it.</p><a href="story.html">Read our story <span data-i="arrow"></span></a></div></section>
+
+<footer><div class="wrap"><a class="brand" href="index.html" aria-label="BoatMedix™ — Never Boat Alone™"><img class="ic" src="brand/icon.png" alt=""><span class="tx"><img class="wm" src="brand/wordmark-navy.svg" alt="BoatMedix™"><span class="tg">Never Boat Alone<sup>™</sup></span></span></a><span class="links"><a href="index.html">Explore</a><a href="boaters.html">For Boaters</a><a href="dealers.html">For Dealers</a><a href="story.html">Our Story</a><a href="get.html">Get BoatMedix</a><a href="mailto:hello@boatmedix.com">Support</a></span><span>© 2026 BoatMedix LLC. All rights reserved.</span></div><div class="legal"><p>BoatMedix is developed by BoatMedix LLC. BoatMedix LLC and HullMark are separate companies; BoatMedix does not claim shared records, synchronized inventories, or a live HullMark data connection.</p><p>Women-owned small business (WOSB) · Veteran-owned small business · Service-disabled veteran-owned small business.</p><p>BoatMedix™ · Never Boat Alone™ · U.S. Trademark Application Serial No. 99640104 · U.S. Copyright Office Application Case No. 1-15234279301. Screens shown are demonstrations with sample data; features may change before release.</p></div></footer>
+<script src="icons.js"></script><script>
+(()=>{const v=document.getElementById('film'),frame=document.getElementById('frame'),btn=document.getElementById('pause'),lbl=document.getElementById('plbl'),ico=document.getElementById('pico'),snd=document.getElementById('snd'),snd2=document.getElementById('snd2'),slbl=document.getElementById('slbl2'),prog=document.getElementById('prog'),bar=document.getElementById('pbar'),tm=document.getElementById('ftime');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,save=navigator.connection&&navigator.connection.saveData;
+const small=Math.min(screen.width,screen.height)*(devicePixelRatio||1)<1000||(navigator.connection&&/2g|3g/.test(navigator.connection.effectiveType||''));
+v.src=small?'media/film-720.mp4':'media/film-1080.mp4';
+const PAUSE='<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>',PLAY='<path d="M8 5.5v13l10.5-6.5z"/>';
+const fmt=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+function setBtn(p){btn.setAttribute('aria-pressed',p);lbl.textContent=p?'Play':'Pause';ico.innerHTML=p?PLAY:PAUSE}
+let userPaused=reduce||!!save;setBtn(userPaused);if(userPaused)frame.classList.add('show');else v.play().catch(()=>{userPaused=true;setBtn(true);frame.classList.add('show')});
+btn.onclick=()=>{userPaused=!userPaused;setBtn(userPaused);userPaused?v.pause():v.play().catch(()=>{})};
+function withSound(){if(!v.muted){v.muted=true;snd.classList.remove('on');snd.setAttribute('aria-pressed','false');slbl.textContent='Watch with sound';snd2.textContent='Watch with sound';return}
+ v.muted=false;v.loop=false;v.currentTime=0;userPaused=false;setBtn(false);v.play().catch(()=>{});snd.classList.add('on');snd.setAttribute('aria-pressed','true');slbl.textContent='Mute';snd2.textContent='Mute';frame.scrollIntoView({behavior:'smooth',block:'center'})}
+snd.onclick=withSound;snd2.onclick=withSound;
+let idleT=0;function idle(){clearTimeout(idleT);frame.classList.remove('hide');if(!v.muted&&!v.paused)idleT=setTimeout(()=>frame.classList.add('hide'),2800)}
+frame.addEventListener('mousemove',idle);frame.addEventListener('touchstart',idle,{passive:true});v.addEventListener('volumechange',idle);v.addEventListener('pause',idle);v.addEventListener('play',idle);
+v.addEventListener('ended',()=>{v.muted=true;v.loop=true;snd.classList.remove('on');slbl.textContent='Watch with sound';snd2.textContent='Watch with sound';v.play().catch(()=>{})});
+v.addEventListener('timeupdate',()=>{const d=v.duration||216.7;bar.style.width=(v.currentTime/d*100).toFixed(2)+'%';tm.textContent=fmt(v.currentTime)+' / '+fmt(d);prog.setAttribute('aria-valuenow',Math.round(v.currentTime))});
+const seek=x=>{const r=prog.getBoundingClientRect();v.currentTime=Math.max(0,Math.min(1,(x-r.left)/r.width))*(v.duration||216.7)};
+prog.addEventListener('click',e=>seek(e.clientX));prog.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){v.currentTime+=5;e.preventDefault()}if(e.key==='ArrowLeft'){v.currentTime-=5;e.preventDefault()}});
+new IntersectionObserver(e=>{if(!userPaused){e[0].isIntersecting?v.play().catch(()=>{}):v.pause()}},{threshold:.2}).observe(frame);
+})();
+
+(()=>{const CH=[
+ [0,2.2,'Sunrise','It starts with a beautiful morning.','And a few questions. Will it storm? Where can we eat? Who’s playing tonight?',[]],
+ [2.2,6.6,'Before','Eight apps to plan one afternoon.','Forecasts, radar, searches, event pages, depth charts, rulebooks and phone numbers, all in different places.',[['Illustrative','']]],
+ [6.6,10,'Together','Everything boating. In one place.','Conditions, places, live music, maps and help, designed to work together in one calm screen.',[['BoatMedix app design',''],['Sample data','s']]],
+ [10,16,'It comes to you','Relevant, right where you are.','As you move, BoatMedix brings what matters nearby to you: places, tonight’s music, Captain’s Lake Stories™, the rules for this water and Community Watch™ reports from other boaters.',[['Concept, in development','s'],['Sample data','s']]],
+ [16,20,'Back to the water','Less searching. More water.','Put the phone down. BoatMedix will let you know if anything changes.',[]]];
+const REP=[1,5.3,9.2,15.4,17.8], D=20;
+const ol=document.getElementById('chap');
+ol.innerHTML=CH.map((c,i)=>`<li><button type="button" data-i="${i}"><span class="n">0${i+1}</span>${c[2]}<span class="pr"><i></i></span></button></li>`).join('');
+const btns=[...ol.querySelectorAll('button')],bars=btns.map(b=>b.querySelector('.pr i'));
+const cap=document.querySelector('.scap'),ck=document.getElementById('ck'),ch=document.getElementById('ch'),cp=document.getElementById('cp'),cl=document.getElementById('cl');
+const pf=document.getElementById('pf'),sun=document.getElementById('sunbg'),tm=document.getElementById('stime');
+const bt=document.getElementById('splay'),lb=document.getElementById('slbl'),ico=document.getElementById('sico');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t=0,play=!reduce,vis=false,last=0,cur=-1,ready=false;
+pf.addEventListener('load',()=>{ready=true;draw()});
+const sm=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
+function setCap(i){if(i===cur)return;cur=i;const c=CH[i];cap.classList.add('sw');
+ setTimeout(()=>{ck.textContent=`0${i+1} · ${c[2]}`;ch.textContent=c[3];cp.textContent=c[4];cl.innerHTML=c[5].map(l=>`<span class="${l[1]}">${l[0]}</span>`).join('');cap.classList.remove('sw')},cur<0?0:220);
+ btns.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-current',j===i?'step':'false')})}
+function draw(){const i=CH.findIndex(c=>t>=c[0]&&t<c[1]);setCap(i<0?4:i);
+ bars.forEach((b,j)=>{const c=CH[j];b.style.width=(Math.min(1,Math.max(0,(t-c[0])/(c[1]-c[0])))*100)+'%'});
+ sun.style.opacity=(1-sm(1.8,2.6,t))+sm(16.1,17,t);
+ const s=Math.floor(t);tm.textContent=`0:${String(s).padStart(2,'0')} / 0:20`;
+ if(ready){try{pf.contentWindow.render(t)}catch(e){pf.contentWindow.postMessage({t},'*')}}}
+function loop(n){if(play&&vis){if(last)t=(t+Math.min(.1,(n-last)/1000))%D;last=n;draw()}else last=0;requestAnimationFrame(loop)}
+function setPlay(p){play=p;lb.textContent=p?'Pause':'Play';ico.innerHTML=p?'<rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/>':'<path d="M2 1l7 4-7 4z"/>'}
+bt.onclick=()=>setPlay(!play);
+btns.forEach((b,i)=>b.onclick=()=>{t=reduce?REP[i]:CH[i][0];draw()});
+new IntersectionObserver(e=>{vis=e[0].isIntersecting},{threshold:.35}).observe(document.getElementById('sstage'));
+document.addEventListener('visibilitychange',()=>{if(document.hidden)last=0});
+if(reduce){t=REP[2];setPlay(false)}
+window.__storySet=x=>{setPlay(false);t=x;draw()};
+draw();requestAnimationFrame(loop);
+})();
+</script><script>(function(){var mb=document.querySelector('.menu'),mn=document.querySelector('.mnav');if(mb)mb.addEventListener('click',function(){var o=mn.classList.toggle('open');mb.setAttribute('aria-expanded',o)})})();</script></body></html>

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --paper:#F7F5F0; --mist:#EDF0F2; --glass:#DDEDEA; --shallows:#8FD3C8; --lake:#2E8C86;
+  --navy:#012851; --depth:#012851; --ink:#0B1F3A; --ink-2:#4D5B6E; --ink-3:#8793A1; --line:#E3E2DC;
+  --sun:#F3C556; --sun-soft:#FBEBC0; --help:#D8473A; --help-soft:#FBE3DF; --white:#FFFFFF;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:40px;
+  --display:'Inter Tight',system-ui,sans-serif; --text:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--text);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+.num{font-variant-numeric:tabular-nums}
+svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}

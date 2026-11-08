@@ -1,0 +1,330 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="app-base.css">
+<style>
+html,body{height:100vh!important;min-height:852px}
+#sb.dk{background:transparent!important;color:#fff}#sb.dk .bat{border-color:#fff}#sb.dk .bat i{background:#fff}
+.ic2 p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.L{position:absolute;inset:0;will-change:opacity,transform}
+/* lock screen */
+#lock{background:#E9D3BC url(media/hero-poster-mobile.jpg) 50% 50%/cover;color:#fff}
+#lock .lt{position:absolute;top:118px;left:0;right:0;text-align:center;color:#0B1F3A}
+#lock .lt small{font:600 18px var(--text);opacity:.75}
+#lock .lt b{display:block;font:600 96px/1 var(--display);letter-spacing:-.04em;margin-top:2px}
+.note{position:absolute;left:14px;right:14px;top:330px;background:rgba(247,245,240,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;padding:14px 16px;display:flex;gap:12px;color:var(--ink);box-shadow:0 10px 30px -12px rgba(11,31,58,.3)}
+.note .ap{width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+.note .ap img{height:28px}
+.note b{font:600 15px var(--display)}.note b span{float:right;font:400 13px var(--text);color:var(--ink-2)}
+.note p{font:400 14.5px/1.35 var(--text);margin-top:2px}
+#sleep{background:#000;opacity:0}
+/* switcher */
+#sw{background:linear-gradient(180deg,#2B3A3E,#162024)}
+.cd{position:absolute;left:0;top:150px;width:300px;height:560px;transform-origin:50% 50%}
+.cd .lb{display:flex;align-items:center;gap:8px;color:#fff;font:600 14px var(--text);margin:0 0 10px 6px}
+.cd .lb i{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:#fff}
+.cd .lb i svg{width:16px;height:16px}
+.cd .bd{height:520px;border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 20px 50px -10px rgba(0,0,0,.5);font-family:var(--text);color:#222;position:relative}
+.cd .dim{position:absolute;inset:0;background:#000;pointer-events:none}
+.g1{padding:26px 22px}.g1 h4{font:500 15px var(--text);color:#666}.g1 .big{font:300 76px/1 var(--text);letter-spacing:-.04em;margin-top:6px}
+.hr{display:flex;justify-content:space-between;margin-top:26px;font:500 13px var(--text);color:#555;text-align:center}.hr div b{display:block;font:500 16px var(--text);color:#222;margin-top:6px}
+.gl{height:14px;border-radius:7px;background:#ECECEC;margin-top:12px}.gl.s{width:60%}.gl.m{width:80%}
+.blob{position:absolute;border-radius:50%;filter:blur(8px)}
+.srch{margin:22px 16px 6px;height:44px;border-radius:22px;border:1px solid #ddd;display:flex;align-items:center;padding:0 16px;font:400 14px var(--text);color:#333;gap:8px}
+.srch svg{width:16px;height:16px;color:#888}
+.res{padding:12px 20px;border-bottom:1px solid #f0f0f0}.res small{font:400 11.5px var(--text);color:#2a7a3a}.res b{display:block;font:500 16px var(--text);color:#1a4fb5;margin:2px 0}.res p{font:400 12.5px/1.35 var(--text);color:#555}
+.post{padding:18px}.post .u{display:flex;gap:10px;align-items:center}.post .u i{width:36px;height:36px;border-radius:50%;background:#D9DEE6}.post .u b{font:600 14px var(--text)}.post .u small{display:block;font:400 12px var(--text);color:#888}
+.post p{font:400 15px/1.4 var(--text);margin-top:12px}
+.cm{margin:10px 18px 0;background:#F0F2F5;border-radius:16px;padding:10px 12px;font:400 13px/1.35 var(--text)}.cm b{font-weight:600;display:block;font-size:12.5px}
+.pdf{background:#5A5F63;height:100%;padding:16px}.pdf .pg{background:#fff;border-radius:4px;height:100%;padding:20px 18px}
+.pdf .pg h5{font:700 15px Georgia,serif}.pdf .tx{height:7px;background:#E3E3E3;border-radius:2px;margin-top:9px}.pdf .hl{background:#FCEB9C}
+.pdf .bar{position:absolute;left:0;right:0;bottom:0;height:40px;background:#3C4044;color:#ddd;font:500 12px var(--text);display:grid;place-items:center}
+.ct{padding:10px 0}.ct div{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #f1f1f1;font:400 15px var(--text)}.ct i{width:34px;height:34px;border-radius:50%;background:#E4E7EA;flex:none}.ct small{display:block;color:#888;font-size:12.5px}
+.counter{position:absolute;left:0;right:0;bottom:70px;text-align:center;color:rgba(255,255,255,.85);font:600 15px var(--text);letter-spacing:-.005em}
+.counter span{display:block;font:500 11px var(--text);letter-spacing:.1em;color:rgba(255,255,255,.5);margin-top:6px}
+/* converge tiles */
+.tile{position:absolute;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff}
+.tile svg{width:28px;height:28px}
+/* home */
+#home{background:var(--paper)}
+.badge{position:absolute;top:50px;left:50%;transform:translateX(-50%);z-index:25;font:600 9.5px var(--text);letter-spacing:.1em;color:var(--ink-2);background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:999px;padding:4px 9px;white-space:nowrap}
+.hl-r{position:absolute;border-radius:24px;box-shadow:0 0 0 3px var(--lake),0 0 0 9px rgba(46,140,134,.16);pointer-events:none;opacity:0;transition:none}
+/* map view */
+#mapv{background:#EEF0EA}
+#mapv .lake{position:absolute;left:0;right:0;top:0;height:470px}
+.top{position:absolute;top:62px;left:16px;right:16px;height:48px;border-radius:24px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);display:flex;align-items:center;gap:10px;padding:0 16px;font:600 15px var(--display);box-shadow:0 4px 16px rgba(11,31,58,.08);z-index:4}
+.top svg{width:18px;height:18px;color:var(--lake)}.top small{margin-left:auto;font:500 12px var(--text);color:var(--ink-2)}
+.boat{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--lake);border:3.5px solid #fff;box-shadow:0 0 0 12px rgba(46,140,134,.18),0 2px 6px rgba(11,31,58,.25);z-index:3}
+.osm{position:absolute;right:12px;top:370px;font:500 8.5px var(--text);color:#5A6866;opacity:.75;z-index:3;pointer-events:none}
+
+/* lake chooser (film-driven via window.dd) */
+.hd h1 .ddch{width:18px;height:18px;color:var(--ink-3);fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-left:2px;margin-top:3px}
+.ddscrim{position:absolute;inset:0;background:rgba(11,31,58,.28);opacity:0;z-index:40;pointer-events:none}
+.ddtap{position:absolute;left:226px;top:116px;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:rgba(46,140,134,.35);border:2px solid rgba(46,140,134,.7);opacity:0;z-index:42}
+.dd{position:absolute;left:16px;right:16px;top:132px;background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(11,31,58,.22);padding:8px;opacity:0;z-index:41;transform-origin:50% 0}
+.ddh{padding:12px 14px 10px;display:flex;flex-direction:column;gap:3px}.ddh b{font:600 16px var(--display);letter-spacing:-.01em}.ddh small{font:500 12px var(--text);color:var(--ink-3)}
+.ddi{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:14px;opacity:0}
+.ddi b{display:block;font:600 15px var(--display);letter-spacing:-.01em;color:var(--ink)}.ddi small{display:block;font:400 12.5px var(--text);color:var(--ink-3);margin-top:2px}
+.ddi.on{background:var(--glass)}.ddi .chk{width:22px;height:22px;color:var(--lake)}.ddi .chk svg{width:22px;height:22px}
+.ddi.add{border-top:1px solid var(--line);border-radius:0 0 14px 14px;margin-top:4px;padding-top:14px;justify-content:flex-start;gap:12px}.ddi.add .pl{width:30px;height:30px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font:500 20px var(--text);color:var(--lake)}
+.mp{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 3px 10px rgba(11,31,58,.16);z-index:2}
+.mp svg{width:17px;height:17px}
+.zone{position:absolute;border:2px dashed #D9A93A;background:rgba(243,197,86,.16);border-radius:50%;z-index:1}
+.sheet{position:absolute;left:0;right:0;top:400px;bottom:0;background:var(--paper);border-radius:30px 30px 0 0;box-shadow:0 -10px 30px -10px rgba(11,31,58,.18);z-index:5;padding:10px 14px 0}
+.sheet .gr{width:40px;height:5px;border-radius:3px;background:#D5D8D2;margin:0 auto 10px}
+.sheet h6{font:600 12px var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 4px 8px;display:flex;justify-content:space-between}
+.sheet h6 span{color:var(--lake);letter-spacing:.04em}
+.stack{position:relative;height:340px}
+.ic2{position:absolute;left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 6px 18px -10px rgba(11,31,58,.2)}
+.ic2 .ii{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+.ic2 .ii svg{width:20px;height:20px}
+.ic2 small{white-space:nowrap;font:600 10.5px var(--text);letter-spacing:.08em;text-transform:uppercase;display:flex;gap:6px;align-items:center}
+.ic2 small em{font-style:normal;letter-spacing:.04em;color:var(--ink-3);font-weight:500;text-transform:none;font-size:11px}
+.ic2 b{display:block;font:600 16px/1.2 var(--display);letter-spacing:-.01em;margin-top:2px}
+.ic2 p{font:400 12.5px/1.35 var(--text);color:var(--ink-2);margin-top:2px}
+.ic2 .st{margin-left:auto;font:600 9px var(--text);letter-spacing:.06em;color:#7A5A10;background:var(--sun-soft);border-radius:6px;padding:3px 6px;white-space:nowrap;align-self:flex-start}
+.ic2 .st.real{color:var(--depth);background:var(--glass)}
+
+/* captain screen */
+#capv{background:var(--paper)}
+#capv .ch{position:absolute;top:62px;left:16px;right:16px;display:flex;align-items:center;gap:12px}
+#capv .ch .av2{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--shallows);display:grid;place-items:center;flex:none}
+#capv .ch .av2 svg{width:22px;height:22px}
+#capv .ch b{font:600 22px var(--display);letter-spacing:-.02em;display:block}
+#capv .ch small{font:500 12.5px var(--text);color:var(--ink-2);display:flex;align-items:center;gap:6px}
+#capv .ch small i{width:7px;height:7px;border-radius:50%;background:var(--lake)}
+#capv .chatw{position:absolute;left:0;right:0;top:118px;bottom:176px;overflow:hidden}
+#capv .chat{position:absolute;left:16px;right:16px;top:10px;display:flex;flex-direction:column;gap:10px;will-change:transform}
+.mc{overflow:hidden}
+.mu{align-self:flex-end;max-width:290px;background:var(--ink);color:#fff;border-radius:22px 22px 6px 22px;padding:13px 16px;font:500 16px/1.35 var(--text)}
+.mc{align-self:flex-start;max-width:320px;background:#fff;border:1px solid var(--line);border-radius:22px 22px 22px 6px;padding:13px 16px;font:400 16px/1.4 var(--text);color:var(--ink);min-height:48px;position:relative}
+.mc .wd{opacity:0}
+.mc .dots{position:absolute;left:16px;top:17px;display:flex;gap:4px}.mc .dots i{width:7px;height:7px;border-radius:50%;background:var(--ink-3)}
+.rc{align-self:flex-start;width:329px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 8px 20px -14px rgba(11,31,58,.25)}
+.rc .ii{width:40px;height:40px;border-radius:13px;background:var(--mist);color:var(--depth);display:grid;place-items:center;flex:none}.rc .ii svg{width:20px;height:20px}
+.rc b{display:block;font:600 17px/1.2 var(--display);letter-spacing:-.01em}.rc p{font:400 12.5px/1.35 var(--text);color:var(--ink-2);margin-top:2px}
+.rc .chips{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.rc .chips span{font:600 11.5px var(--text);color:var(--depth);background:var(--glass);border-radius:999px;padding:4px 9px;opacity:0}
+.rc .st{margin-left:auto;font:600 9px var(--text);letter-spacing:.06em;color:#7A5A10;background:var(--sun-soft);border-radius:6px;padding:3px 6px;white-space:nowrap}
+.cc{align-self:flex-start;width:329px;display:flex;align-items:center;gap:10px;background:linear-gradient(170deg,#F4F7F2,#DCEFEA);border-radius:18px;padding:11px 14px;font:500 14px var(--text)}
+.cc .ii{width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.7);color:#9A6B00;display:grid;place-items:center;flex:none}.cc .ii svg{width:18px;height:18px}
+.cc b{font:600 15px var(--display)}.cc em{font-style:normal;color:var(--ink-2)}
+.rt{align-self:flex-start;width:329px;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 20px -14px rgba(11,31,58,.25)}
+.rt .mm{height:118px;position:relative;overflow:hidden}
+.rt .mm .lk{position:absolute;inset:0}
+.rt .mm svg.rtl{position:absolute;inset:0;width:100%;height:100%}
+.rt .mm .me2{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--lake);border:3px solid #fff;box-shadow:0 0 0 8px rgba(46,140,134,.18)}
+.rt .mm .pn{position:absolute;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:#fff;color:var(--depth);display:grid;place-items:center;box-shadow:0 2px 8px rgba(11,31,58,.16)}.rt .mm .pn svg{width:15px;height:15px}
+.rt .ft{display:flex;align-items:center;gap:10px;padding:11px 14px}
+.rt .ft b{font:600 15px var(--display);display:block;letter-spacing:-.01em}.rt .ft span{font:400 12.5px var(--text);color:var(--ink-2)}
+.rt .ft .go{margin-left:auto;background:var(--ink);color:#fff;border-radius:999px;padding:9px 16px;font:600 13.5px var(--display)}
+#capv .mic{position:absolute;left:16px;right:16px;bottom:108px;height:58px;border-radius:29px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:0 10px 0 18px;box-shadow:0 10px 30px -16px rgba(11,31,58,.3)}
+#capv .mic .wv{display:flex;gap:3px;align-items:center;height:28px;flex:1}
+#capv .mic .wv i{width:3px;border-radius:2px;background:var(--lake);height:6px}
+#capv .mic .lb{font:500 13.5px var(--text);color:var(--ink-2);white-space:nowrap}
+#capv .mic .mb{width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--shallows);display:grid;place-items:center}#capv .mic .mb svg{width:20px;height:20px}
+</style></head><body>
+<div class="sb" id="sb"><span class="num">11:20</span><span class="r"><svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><span class="bat"><i></i></span></span></div>
+
+<!-- 1. lock -->
+<div class="L" id="lock"><div class="lt"><small>Saturday, July 18</small><b class="num">7:42</b></div></div>
+
+<!-- 2. switcher -->
+<div class="L" id="sw"><div id="cards"></div><div id="tiles"></div><div class="counter" id="ctr"></div></div>
+
+<!-- 3. home -->
+<div class="L" id="home"><div class="ddscrim" id="ddscrim"></div><span class="ddtap" id="ddtap"></span>
+<div class="dd" id="dd"><div class="ddh"><b>Choose your water</b><small>Inland lakes to coastal waterways</small></div><div class="ddi on"><div><b>Buckeye Lake</b><small>Ohio · here now</small></div><span class=chk data-i=check></span></div><div class="ddi"><div><b>Burr Oak Lake</b><small>Ohio</small></div></div><div class="ddi"><div><b>Indian Lake</b><small>Ohio</small></div></div><div class="ddi"><div><b>Lake Erie · Put-in-Bay</b><small>Ohio</small></div></div><div class="ddi"><div><b>Lake Cumberland</b><small>Kentucky</small></div></div><div class="ddi"><div><b>Lake Norman</b><small>North Carolina</small></div></div><div class="ddi"><div><b>Lake of the Ozarks</b><small>Missouri</small></div></div><div class="ddi"><div><b>Intracoastal Waterway</b><small>Charleston, South Carolina</small></div></div><div class="ddi add"><span class="pl">+</span><div><b>Add a lake or waterway</b><small>Search any water in the U.S.</small></div></div></div><div class="scr"><div class="in" style="padding-top:72px">
+ <div class="hd"><div><small>Saturday · 11:20 AM</small><h1><span data-i="pin"></span>Buckeye Lake<svg class="ddch" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></h1></div><div class="av">A</div></div>
+ <div class="wx" id="h-wx"><div class="sunorb"></div>
+  <div class="t"><div class="deg num">81°</div><div><div class="lbl">Sunny, light breeze</div><div class="sub">A good afternoon to be out.</div></div></div>
+  <div class="met"><div><span data-i="wind"></span><b class="num">7 mph</b><span>Wind SW</span></div><div><span data-i="drop"></span><b class="num">78°</b><span>Water</span></div><div><span data-i="uv"></span><b class="num">8</b><span>UV</span></div><div><span data-i="sunset"></span><b class="num">8:56</b><span>Sunset</span></div></div>
+  <div class="heads"><span class="dot" data-i="cloud"></span><div style="flex:1;display:flex;justify-content:space-between">Storms after 4 PM <em>Dock by 3:30</em></div></div>
+ </div>
+ <div class="map" data-lake id="h-map"><span class="me" style="left:169px;top:48px"></span><span class="pinp" style="left:27px;top:45px;color:var(--depth)" data-i="food"></span><span class="pinp" style="left:121px;top:27px;color:var(--depth)" data-i="fuel"></span><span class="pinp" style="left:170px;top:15px;color:#7A5A00" data-i="music"></span><span class="pinp" style="left:224px;top:73px;color:var(--lake)" data-i="sandbar"></span><span class="mchip"><i></i>5 things near you</span></div>
+ <div class="plan" id="h-plan"><span class="ic" data-i="plan"></span><div><b>Plan My Day</b><span>A day built around today’s weather</span></div></div>
+ <div class="g2" id="h-g2"><div class="act"><span class="ic" data-i="fuel"></span>Find Fuel</div><div class="act help"><span class="ic" data-i="help"></span>Find Help</div></div>
+ <div class="g3" id="h-g3"><div class="act"><span class="ic" data-i="food"></span>Restaurants</div><div class="act"><span class="ic" data-i="sandbar"></span>Sandbars</div><div class="act"><span class="ic" data-i="music"></span>Live Music</div></div>
+</div></div>
+<div class="hl-r" id="ring"></div>
+<div class="tb"><div class="on"><span data-i="home"></span>Home</div><div><span data-i="explore"></span>Explore</div><div class="cap"><span class="c" data-i="captain"></span>Captain</div><div><span data-i="playlist"></span>Playlist</div><div><span data-i="boat"></span>My Boat</div></div>
+</div>
+
+<!-- 4. map view -->
+<div class="L" id="mapv">
+ <div class="lake" data-lake2></div><span class="osm">Map data © OpenStreetMap contributors</span>
+ <div class="top"><span data-i="locate"></span>Near you<small>Updated as you move</small></div>
+ <div class="zone" id="zone" style="left:112px;top:312px;width:100px;height:70px"></div>
+ <div id="pins"></div><div class="boat" id="boat"></div>
+ <div class="sheet"><div class="gr"></div><h6>Right here, right now <span>Location-aware</span></h6><div class="stack" id="stack"></div></div>
+</div>
+
+<!-- 5. end -->
+<div class="L" id="lock2" style="background:#E9D3BC url(media/hero-poster-mobile.jpg) 50% 50%/cover"><div class="lt" style="position:absolute;top:118px;left:0;right:0;text-align:center;color:#0B1F3A"><small style="font:600 18px var(--text);opacity:.75">Saturday, July 18</small><b class="num" style="display:block;font:600 96px/1 var(--display);letter-spacing:-.04em;margin-top:2px">1:05</b></div>
+ <div class="note" id="note"><span class="ap"><img src="logo-mark.png" onerror="this.remove()"></span><div style="flex:1"><b>BoatMedix <span>now</span></b><p>Storms after 4 PM. We’ll remind you at 3:30 to head in. Enjoy the water.</p></div></div>
+</div>
+
+<!-- 6. captain -->
+<div class="L" id="capv">
+ <div class="ch"><span class="av2" data-i="captain"></span><div><b>Captain</b><small id="cst"><i></i>Buckeye Lake · 4:41 PM</small></div></div>
+ <div class="chatw"><div class="chat" id="chat">
+  <div class="mu" id="mu">Captain, where should we go for dinner tonight?</div>
+  <div class="mc" id="mc"><span class="dots" id="dots"><i></i><i></i><i></i></span><span id="mcw"></span></div>
+  <div class="rc" id="rc"><span class="ii" data-i="food"></span><div style="flex:1;min-width:0"><b>Lakeside Grille</b><p>Waterfront · courtesy dock · dinner till 9</p><div class="chips" id="chips"><span>12 min</span><span>3.1 mi</span><span>Dock open</span><span>Live music 7:30</span></div></div><span class="st">SAMPLE</span></div>
+  <div class="cc" id="cc"><span class="ii" data-i="sun"></span><div><b>79°</b> · Calm, SW 4 mph <em>· storms stay south tonight</em></div></div>
+  <div class="rt" id="rt"><div class="mm"><div class="lk" data-lake3></div><svg class="rtl" viewBox="0 0 329 118"><path id="rtp" d="M79 98 C130 96 175 90 211 79 S260 56 287 34" fill="none" stroke="#2E8C86" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 7"/></svg><span class="me2" style="left:79px;top:98px"></span><span class="pn" id="rpn" style="left:287px;top:34px" data-i="food"></span></div>
+   <div class="ft"><div><b>Route to Lakeside Grille</b><span>12 min · 3.1 mi · idle through the channel</span></div><span class="go">Start</span></div></div>
+ </div></div>
+ <div class="mic"><span class="wv" id="cwv"></span><span class="lb" id="clb">Listening</span><span class="mb" data-i="mic"></span></div>
+ <div class="tb"><div><span data-i="home"></span>Home</div><div><span data-i="explore"></span>Explore</div><div class="cap on"><span class="c" data-i="captain"></span>Captain</div><div><span data-i="playlist"></span>Playlist</div><div><span data-i="boat"></span>My Boat</div></div>
+</div>
+<div class="L" id="sleep"></div>
+<div class="badge" id="badge">DESIGN CONCEPT · SAMPLE DATA</div>
+
+<script src="icons.js"></script><script src="lake.svg.js"></script>
+<script>
+Object.assign(P,{
+ radar:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/>',
+ bolt:'<path d="M13 2L5 13h6l-1 9 8-11h-6z"/>',
+ social:'<rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21l3-4"/>',
+ map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+ book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>',
+ phone:'<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 4 6"/>',
+ alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',
+ rule:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+});
+document.querySelectorAll('[data-i]').forEach(e=>{e.innerHTML=ic(e.dataset.i, e.dataset.c||'i')});
+document.querySelector('[data-lake3]').innerHTML=LAKE.replace('viewBox="0 0 400 240"','viewBox="70 30 250 110"');
+document.querySelector('[data-lake2]').innerHTML=LAKE.replace('xMidYMid slice','xMidYMid slice').replace('viewBox="0 0 400 240"','viewBox="90 10 220 230"');
+
+const C=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), E=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2, S=(t,a,b)=>E(C((t-a)/(b-a))), L=(a,b,p)=>a+(b-a)*p;
+const $=id=>document.getElementById(id);
+
+/* ---------- separate apps (generic, no real brands) ---------- */
+const APPS=[
+ ['Weather','#3B82C4','sun',`<div class="g1"><h4>Current location</h4><div class="big">81°</div><div style="font:400 16px var(--text);color:#444;margin-top:6px">Mostly sunny · H 84° L 66°</div><div class="hr">${['12P','1P','2P','3P','4P','5P'].map((h,i)=>`<div>${h}<b>${[81,83,84,82,76,72][i]}°</b></div>`).join('')}</div><div class="gl m" style="margin-top:28px"></div><div class="gl s"></div><div class="gl m"></div></div>`],
+ ['Radar','#2F6D58','radar',`<div style="position:absolute;inset:0;background:#DCE3DA"><div class="blob" style="left:150px;top:90px;width:150px;height:110px;background:rgba(80,180,80,.6)"></div><div class="blob" style="left:200px;top:120px;width:70px;height:50px;background:rgba(240,200,40,.8)"></div><div class="blob" style="left:220px;top:132px;width:28px;height:22px;background:rgba(230,70,40,.85)"></div><div style="position:absolute;left:96px;top:300px;width:14px;height:14px;border-radius:50%;background:#2E6BD6;border:3px solid #fff"></div><div style="position:absolute;left:16px;right:16px;bottom:16px;background:#fff;border-radius:16px;padding:14px;font:500 13px var(--text)">⚡ Lightning 12 mi NW<div class="gl m"></div></div></div>`],
+ ['Search','#5B6670','search',`<div class="srch">${ic('search')}waterfront restaurants with docks near me</div>${['Top 10 lake restaurants (2019)','Restaurant · Hours may differ','Is the dock open this year?'].map((r,i)=>`<div class="res"><small>www.example${i+1}.com</small><b>${r}</b><p>${['An older list that may be out of date…','Call ahead to confirm hours and boat docking…','Forum thread · 14 replies · last year'][i]}</p></div>`).join('')}`],
+ ['Events page','#4F5FA8','social',`<div class="post"><div class="u"><i></i><div><b>Lake community group</b><small>3 h</small></div></div><p>Does anyone know who’s playing on the water tonight? And what time?</p></div><div class="cm"><b>Member</b>I think it’s 7? Or 8. Check their page.</div><div class="cm"><b>Member</b>Their page hasn’t been updated since June.</div>`],
+ ['Maps','#3E8E63','map',`<div style="position:absolute;inset:0;background:#E8EDE4"><svg viewBox="0 0 300 520" style="width:100%;height:100%"><path d="M-10 180 C80 150 120 250 220 230 S320 200 320 200 L320 330 C230 360 160 300 90 330 S-10 340 -10 340Z" fill="#AFCFE6"/><path d="M0 90H300M60 0V520M0 420H300M210 0V520" stroke="#fff" stroke-width="6"/></svg><div style="position:absolute;left:16px;right:16px;bottom:16px;background:#fff;border-radius:16px;padding:14px;font:500 13px var(--text);color:#444">No depth information for this area</div></div>`],
+ ['Depth chart.pdf','#6B5B4B','layers',`<div class="pdf"><div class="pg"><h5>Lake Depth Map</h5>${Array.from({length:12},(_,i)=>`<div class="tx" style="width:${[90,70,85,60,95,75,80,65,90,55,85,70][i]}%"></div>`).join('')}</div><div class="bar">Page 3 of 9</div></div>`],
+ ['Boating rules.pdf','#7A6A3A','book',`<div class="pdf"><div class="pg"><h5>Boat Operator’s Guide</h5>${Array.from({length:14},(_,i)=>`<div class="tx ${i==6||i==7?'hl':''}" style="width:${[90,70,85,60,95,75,80,65,90,55,85,70,80,60][i]}%"></div>`).join('')}</div><div class="bar">Page 14 of 48 · Search: “idle speed”</div></div>`],
+ ['Contacts','#8A8F94','phone',`<div class="ct">${['Marina?','Tow service (old number?)','Friend who knows the lake','Park office'].map(n=>`<div><i></i><div>${n}<small>mobile</small></div></div>`).join('')}</div>`]
+];
+$('cards').innerHTML=APPS.map(([n,c,i,b])=>`<div class="cd"><div class="lb"><i style="background:${c}">${ic(i)}</i>${n}</div><div class="bd">${b}<div class="dim"></div></div></div>`).join('');
+$('tiles').innerHTML=APPS.map(([n,c,i])=>`<div class="tile" style="background:${c}">${ic(i)}</div>`).join('');
+const cards=[...document.querySelectorAll('.cd')], tiles=[...document.querySelectorAll('.tile')];
+
+/* ---------- location cards ---------- */
+const CARDS=[
+ ['food','var(--depth)','var(--mist)','Nearby','0.4 mi','Lakeside Grille','Open now · courtesy dock · lunch until 3','SAMPLE'],
+ ['music','#7A5A00','var(--sun-soft)','Tonight','7:30 PM','The Driftwood Duo, live on the deck','Lakeside Grille · boat-up seating','SAMPLE'],
+ ['captain','var(--shallows)','var(--ink)',"Captain’s Lake Stories",'','The island that floats','Cranberry Bog broke loose from the lake bottom when the canal reservoir was flooded in the 1820s.','REAL HISTORY'],
+ ['rule','#8A5A00','#FBEBC0','Rules here','Ahead','No-wake zone ahead','Idle speed only inside the marked buoys (Ohio law).','SAMPLE AREA'],
+ ['users','var(--lake)','var(--glass)','Community report','18 min ago','Floating log near the channel','Reported by a boater · confirmed by 3 others','SAMPLE']
+];
+$('stack').innerHTML=CARDS.map(c=>`<div class="ic2"><span class="ii" style="color:${c[1]};background:${c[2]}">${ic(c[0])}</span><div style="flex:1;min-width:0"><small style="color:${c[1]=='var(--shallows)'?'var(--depth)':c[1]}">${c[3]}${c[4]?`<em>· ${c[4]}</em>`:''}</small><b>${c[5]}</b><p>${c[6]}</p></div><span class="st ${c[7]=='REAL HISTORY'?'real':''}">${c[7]}</span></div>`).join('');
+const ics=[...document.querySelectorAll('.ic2')];
+const PINS=[[114,159,'food','var(--depth)'],[217,123,'music','#7A5A00'],[323,255,'captain','var(--depth)'],[160,345,'rule','#8A5A00'],[268,225,'users','var(--lake)']];
+$('pins').innerHTML=PINS.map(p=>`<span class="mp" style="left:${p[0]}px;top:${p[1]}px;color:${p[3]}">${ic(p[2])}</span>`).join('');
+const pins=[...document.querySelectorAll('.mp')];
+const PATH=[[74,235],[135,221],[196,208],[257,206],[300,206],[338,196]];
+function along(p){const n=PATH.length-1,f=C(p)*n,i=Math.min(n-1,Math.floor(f)),u=f-i;return [L(PATH[i][0],PATH[i+1][0],u),L(PATH[i][1],PATH[i+1][1],u)]}
+
+/* ---------- timeline (seconds) ---------- */
+const T0=2.2, STEP=.42;  // cards arrive
+const hl=[['h-wx'],['h-map'],['h-g3'],['h-g2']];
+function render(t){
+ // lock in/out
+ const lockO=1-S(t,1.7,2.3); $('lock').style.opacity=lockO; $('lock').style.transform=`scale(${L(1,1.06,S(t,1.7,2.3))})`;
+ // switcher
+ const swIn=S(t,1.8,2.3), swOut=S(t,7.0,7.7); $('sw').style.opacity=swIn*(1-swOut);
+ const r=cards.map((_,i)=>S(t,T0+i*STEP,T0+i*STEP+.5));
+ const conv=S(t,5.6,6.6);
+ cards.forEach((c,i)=>{let d=0;for(let j=i+1;j<r.length;j++)d+=r[j];
+  const x=L(470,46,r[i])-d*26, y=-d*6, sc=1-d*.045;
+  // converge to tile grid
+  const col=i%4,row=Math.floor(i/4), tx=38+col*84+32-150, ty=330+row*84+32-430;
+  const cx=L(x,tx,conv), cy=L(y,ty,conv), cs=L(sc,64/300,conv);
+  c.style.transform=`translate(${cx}px,${cy}px) scale(${cs})`;
+  c.style.opacity=r[i]>0?(d>5?C(6-d):1)*(1-S(t,6.2,6.6)):0;
+  c.querySelector('.dim').style.opacity=C(d*.12,0,.5);c.querySelector('.lb').style.opacity=C(1-d*1.6)*(1-conv);
+ });
+ tiles.forEach((e,i)=>{const col=i%4,row=Math.floor(i/4);
+  const p=S(t,6.9,7.6), gx=38+col*84, gy=330+row*84, cx=164, cy=372;
+  e.style.left=L(gx,cx,p)+'px'; e.style.top=L(gy,cy,p)+'px';
+  e.style.opacity=S(t,6.1,6.5)*(1-S(t,7.2,7.6)); e.style.transform=`scale(${L(1,.6,p)})`;});
+ const taps=Math.round(C((t-T0)/(STEP*8))*31), apps=Math.min(8,Math.max(0,Math.ceil((t-T0)/STEP)));
+ $('ctr').innerHTML=apps?`${apps} app${apps>1?'s':''} · ${taps} taps<span>ILLUSTRATIVE</span>`:'';
+ $('ctr').style.opacity=1-S(t,5.5,5.9);
+ // home
+ const hIn=S(t,7.2,8.0), hOut=S(t,10.0,10.6); $('home').style.opacity=hIn*(1-hOut); $('home').style.transform=`scale(${L(.94,1,hIn)})`;
+ // ring highlight 8.1-9.9
+ const k=Math.floor((t-8.1)/.45), ring=$('ring');
+ if(t>8.1&&t<9.9&&hl[k]){const el=$(hl[k][0]).getBoundingClientRect();Object.assign(ring.style,{left:el.left-3+'px',top:el.top-3+'px',width:el.width+6+'px',height:el.height+6+'px',opacity:Math.min(1,((t-8.1)%.45)/.12)})}else ring.style.opacity=0;
+ // map view
+ const mIn=S(t,9.9,10.7); $('mapv').style.opacity=mIn; $('mapv').style.transform=`scale(${L(1.04,1,mIn)})`;
+ const bp=C((t-10.4)/5.4); const [bx,by]=along(bp); $('boat').style.left=bx+'px'; $('boat').style.top=by+'px';
+ const ca=CARDS.map((_,i)=>S(t,10.8+i*1.0,10.8+i*1.0+.55));
+ ics.forEach((c,i)=>{let d=0;for(let j=i+1;j<ca.length;j++)d+=ca[j];
+  const y=L(360,0,ca[i])+ d*0, top= L(260,0,0);
+  // newest at top, older slide down & compress
+  const oy=d*106; c.style.transform=`translateY(${L(380,oy,ca[i])}px) scale(${1-Math.min(d,3)*.03})`;
+  c.style.opacity=ca[i]*C(3-d); c.style.zIndex=10+i;});
+ pins.forEach((p,i)=>{const a=S(t,10.6+i*1.0,10.6+i*1.0+.4);p.style.opacity=a;p.style.transform=`scale(${L(.4,1,a)+ (t>10.8+i&&t<11.8+i?.12*Math.sin((t-10.8-i)*Math.PI):0)})`});
+ $('zone').style.opacity=S(t,13.6,14.1)*.9;
+ // end
+ const eIn=S(t,16.0,16.8); $('lock2').style.opacity=eIn;
+ const nIn=S(t,16.8,17.4); $('note').style.opacity=nIn; $('note').style.transform=`translateY(${L(-24,0,nIn)}px)`;
+ $('sleep').style.opacity=S(t,18.8,19.8)*.92;
+ // status bar + badge
+ const showSb=(t>1.8&&t<16.4); $('sb').style.opacity=showSb?1:0; $('sb').classList.toggle('dk',t>1.8&&t<7.4);
+ document.querySelectorAll('#sb rect').forEach(r=>r.setAttribute('fill',(t>1.8&&t<7.4)?'#fff':'#0B1F3A'));
+ const b=$('badge'); b.style.opacity=(t>7.4&&t<16.2)?1:0;
+}
+
+/* ---------- captain conversation (t 20–34) ---------- */
+const A0=23.4; // answer starts
+// phrase chunks: [start offset, text]
+const ANS=[[0.00,'Lakeside Grille,'],[0.62,' twelve minutes east.'],[1.52,' Courtesy dock,'],[2.02,' open till nine,'],[2.81,' and catch live music at seven-thirty,'],[4.05,' the Driftwood Duo.'],[5.09,' It’s 79° and calm,'],[5.81,' and the storms stay south tonight.'],[7.06,' Route’s on your map.']];
+$('mcw').innerHTML=ANS.map((a,i)=>`<span class="wd" id="wd${i}">${a[1]}</span>`).join('');
+$('cwv').innerHTML=Array.from({length:26},()=>'<i></i>').join('');
+const cwv=[...document.querySelectorAll('#cwv i')], chips=[...document.querySelectorAll('#chips span')];
+const rtp=$('rtp'); const RTL=rtp.getTotalLength(); const MCH=$('mc').offsetHeight;
+function renderCaptain(t){
+ const on=S(t,20,20.6); $('capv').style.opacity=on; $('capv').style.transform=`scale(${L(.97,1,on)})`;
+ if(t<19.8){$('capv').style.opacity=0;$('badge').style.bottom='';$('badge').style.top='50px';document.querySelector('#sb .num').textContent='11:20';return}
+ const q=S(t,20.7,21.1); $('mu').style.opacity=q; $('mu').style.transform=`translateY(${L(16,0,q)}px)`;
+ const th=S(t,22.9,23.2); $('mc').style.opacity=th; $('mc').style.transform=`translateY(${L(12,0,th)}px)`;
+ $('dots').style.opacity=t<A0?1:0; const u=t-A0;
+ ANS.forEach((a,i)=>{$('wd'+i).style.opacity=S(u,a[0],a[0]+.25)});
+ const rc=S(u,.15,.6); $('rc').style.opacity=rc; $('rc').style.transform=`translateY(${L(16,0,rc)}px)`;
+ chips.forEach((c,i)=>{c.style.opacity=S(u,[.9,1.15,2.1,2.85][i],[.9,1.15,2.1,2.85][i]+.3)});
+ $('mc').style.height=L(48,MCH,S(u,-.1,.5))+'px';
+ const cc=S(u,3.55,4.0); $('cc').style.opacity=cc; $('cc').style.transform=`translateY(${L(16,0,cc)}px)`;
+ const rt=S(u,6.95,7.4); $('rt').style.opacity=rt; $('rt').style.transform=`translateY(${L(16,0,rt)}px)`;
+ const dr=S(u,7.1,8.3); rtp.style.strokeDasharray=`${RTL}`; rtp.style.strokeDashoffset=`${RTL*(1-dr)}`; $('rpn').style.transform=`scale(${S(u,8.0,8.4)})`;
+ // chat scroll: keep latest visible
+ let last=null; for(const id of ['mu','mc','rc','cc','rt']){if(+$(id).style.opacity>0.02)last=$(id)}
+ const limit=852-176-118-12, vb=last?last.offsetTop+last.offsetHeight+(last.id=='mc'?(MCH-parseFloat($('mc').style.height||MCH)):0)*-1:0;
+ $('chat').style.transform=`translateY(${-Math.max(0,vb-limit)}px)`;
+ // mic state
+ const listening=t>20.3&&t<22.9, speaking=u>0&&u<7.75;
+ $('clb').textContent=listening?'Listening':(t<A0?'Thinking':(speaking?'Captain is speaking':'Tap to ask'));
+ cwv.forEach((b,i)=>{const amp=listening?10+Math.abs(Math.sin(t*11+i*.7))*16:speaking?6+Math.abs(Math.sin(t*9+i*.9))*18:4; b.style.height=amp+'px'; b.style.opacity=listening||speaking?1:.35});
+ $('cst').innerHTML='<i></i>'+(speaking?'Speaking':'Buckeye Lake · 4:41 PM');
+ // status bar/badge
+ $('sb').style.opacity=1; $('sb').classList.remove('dk'); document.querySelectorAll('#sb rect').forEach(r=>r.setAttribute('fill','#0B1F3A'));
+ $('badge').style.opacity=1; $('badge').style.top='auto';$('badge').style.bottom='182px'; document.querySelector('#sb .num').textContent='4:41'; $('lock2').style.opacity=0; $('note').style.opacity=0; $('sleep').style.opacity=0; $('mapv').style.opacity=0; $('home').style.opacity=0;
+}
+
+const _render=render; render=function(t){_render(t); renderCaptain(t)};
+window.render=render;
+const q=new URLSearchParams(location.search); render(q.has('t')?+q.get('t'):0);
+
+window.dd=function(u){const sc=$('ddscrim'),tp=$('ddtap'),p=$('dd');
+ if(u<=0||u>=1){sc.style.opacity=0;tp.style.opacity=0;p.style.opacity=0;return}
+ const tap=S(u,.04,.10)*(1-S(u,.12,.20)); tp.style.opacity=tap; tp.style.transform=`scale(${L(.6,2.6,S(u,.04,.20))})`;
+ const op=S(u,.14,.30)*(1-S(u,.82,.94)); sc.style.opacity=op*.9; p.style.opacity=op;
+ p.style.transform=`translateY(${L(-14,0,S(u,.14,.32))*(u<.5?1:0)+(u>=.5?L(0,-10,S(u,.82,.94)):0)}px) scale(${L(.97,1,S(u,.14,.32))})`;
+ [...p.querySelectorAll('.ddi')].forEach((e,i)=>{const a=.20+i*.025;e.style.opacity=S(u,a,a+.08)*(1-S(u,.82,.94));e.style.transform=`translateY(${L(6,0,S(u,a,a+.1))}px)`});
+};
+addEventListener('message',e=>{if(e.data&&typeof e.data.t=='number')render(e.data.t);if(e.data&&typeof e.data.dd=='number')window.dd(e.data.dd)});
+</script></body></html>

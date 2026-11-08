@@ -1,0 +1,32 @@
+const P={
+ plan:'<circle cx="6" cy="18" r="2"/><path d="M8 18h5a3.5 3.5 0 0 0 0-7h-2a3.5 3.5 0 0 1 0-7h3"/><path d="M18 1.8l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z" fill="currentColor" stroke="none"/>',
+ fuel:'<path d="M5 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M4 20h12M8 9h4"/><path d="M15 9l3 2v6a1.5 1.5 0 0 0 3 0v-7l-2.5-2.5"/>',
+ help:'<circle cx="12" cy="12" r="8.5"/><path d="M12 8v8M8 12h8"/>',
+ food:'<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 4-3 7h3v11"/>',
+ sandbar:'<path d="M3 17c2.5-4 6-6 9-6s6.5 2 9 6"/><path d="M3 20.5c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/><circle cx="16.5" cy="6" r="2"/>',
+ music:'<path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+ home:'<path d="M4 11l8-6.5 8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/>',
+ explore:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+ captain:'<path d="M4 12h1.5M8 8v8M12 5v14M16 8v8M19.5 12H20"/>',
+ playlist:'<path d="M4 6h11M4 11h11M4 16h6"/><circle cx="17.5" cy="17" r="2.5"/><path d="M20 17V8l-2.5-.5"/>',
+ boat:'<path d="M3 15h18l-2.5 4.5a1 1 0 0 1-.9.5H6.4a1 1 0 0 1-.9-.5z"/><path d="M12 3v12M12 4l6 9h-6"/>',
+ wind:'<path d="M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3M3 12h7"/>',
+ drop:'<path d="M12 3.5c3 4 6 7 6 10.5a6 6 0 0 1-12 0c0-3.5 3-6.5 6-10.5z"/>',
+ sunset:'<path d="M17 18a5 5 0 0 0-10 0M3 18h18M12 3v6M8 6l4 3 4-3"/>',
+ uv:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+ pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ chev:'<path d="M9 6l6 6-6 6"/>',
+ mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/>',
+ search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+ bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/>',
+ play:'<path d="M8 5.5v13l10.5-6.5z"/>',
+ check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ cloud:'<path d="M7 18a4.5 4.5 0 1 1 1-8.9A6 6 0 0 1 19.5 12 3 3 0 0 1 18 18z"/>',
+ sun:'<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>',
+ layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+ locate:'<circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5V4M12 20v2.5M1.5 12H4M20 12h2.5"/>'
+};
+function ic(n,cls='i',extra=''){return `<svg class="${cls}" viewBox="0 0 24 24" ${extra}>${P[n]}</svg>`}
+document.querySelectorAll('[data-i]').forEach(e=>{e.innerHTML=ic(e.dataset.i, e.dataset.c||'i')});
