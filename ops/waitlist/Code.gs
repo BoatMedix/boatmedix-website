@@ -143,7 +143,7 @@ function buildFeed_() {
   return { ok: true, count: show ? count : null, comments: comments, updated: new Date().toISOString() };
 }
 
-/* ------------------- Founding Marine Pro registrations ------------------- */
+/* ------------------- Marine Pro registrations ------------------- */
 
 var PRO_SHEET = 'Marine Pros';
 var PRO_HEAD = [
@@ -225,14 +225,14 @@ function setupPros_() {
 function sendProConfirmation_(email, contact, business) {
   var lines = [
     '<p>Hi ' + esc_(contact) + ',</p>',
-    '<p>Thank you for your interest in the founding BoatMedix Marine Pro Network\u2122 on behalf of ' + esc_(business) + '. We\u2019ve received your registration.</p>',
+    '<p>Thank you for your interest in the BoatMedix Marine Pro Network\u2122 on behalf of ' + esc_(business) + '. We\u2019ve received your registration.</p>',
     '<p>The network is still being built. Bookings, consultations and payments are not live yet, and registering is free. We\u2019ll be in touch as we get closer to launch, including any steps to verify qualifications.</p>',
     '<p>Need to update something, or didn\u2019t register? Just reply to this email.</p>',
     '<p>BoatMedix\u2122 \u00b7 Never Boat Alone\u2122<br><a href="https://boatmedix.com/marinepro/">boatmedix.com/marinepro</a></p>'
   ];
   MailApp.sendEmail({
     to: email,
-    subject: 'Thanks for registering for the founding Marine Pro Network',
+    subject: 'Thanks for registering for the Marine Pro Network',
     body: lines.join('\n\n').replace(/<br>/g, '\n').replace(/<[^>]+>/g, ''),
     htmlBody: '<div style="font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#0C1D21;max-width:560px">' + lines.join('') + '</div>',
     name: CFG.FROM_NAME,

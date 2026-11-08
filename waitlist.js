@@ -106,7 +106,7 @@ var BMX_ENDPOINT = '';
   });
 })();
 
-/* ---------- Founding Marine Pro registration (/marinepro) ---------- */
+/* ---------- Marine Pro registration (/marinepro) ---------- */
 (function () {
   var form = document.getElementById('pro-form');
   if (!form) return;
@@ -148,7 +148,7 @@ var BMX_ENDPOINT = '';
         d.querySelector('h3').textContent = res.status === 'already' ? 'You’re already registered.' : 'Thank you, ' + body.contact.split(' ')[0] + '.';
         d.querySelector('p').textContent = res.status === 'already'
           ? 'We already have a registration for ' + body.email + '. Nothing more to do. To update your details, email hello@boatmedix.com.'
-          : 'Your interest in the founding Marine Pro Network is registered. ' + (res.emailed ? 'A confirmation is on its way to ' + body.email + '. ' : '') + 'We’ll be in touch as the network gets ready. Nothing is booked or charged.';
+          : 'Your interest in the Marine Pro Network is registered. ' + (res.emailed ? 'A confirmation is on its way to ' + body.email + '. ' : '') + 'We’ll be in touch as the network gets ready. Nothing is booked or charged.';
         form.hidden = true; d.hidden = false; d.focus(); d.scrollIntoView({ block: 'center' });
       })
       .catch(function () { btn.disabled = false; say('We couldn’t reach the registration service. Please check your connection and try again.', 'err'); });
