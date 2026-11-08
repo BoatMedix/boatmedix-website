@@ -2,7 +2,7 @@
    Talks to the BoatMedix Google Apps Script endpoint (see ops/waitlist).
    No customer data is stored in this website or its repository. */
 // Production endpoint: the Apps Script web app owned by BoatMedix.
-var BMX_ENDPOINT = '';
+var BMX_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyZnhVu1WeroHWmRNpHodz-O4cs7EUgCa9Z48DG-XRMKEEx1O_VFb0JzjYL4kpuBmp6/exec';
 (function () {
   // Local testing only: allow ?wl=<url> on localhost / 127.0.0.1.
   var q = new URLSearchParams(location.search).get('wl');
