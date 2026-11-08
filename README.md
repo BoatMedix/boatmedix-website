@@ -23,6 +23,6 @@ Change the HTML files and push to `main`. GitHub Pages republishes within a minu
 | `media/` | Hero film (1080p and 720p), poster, share image |
 | `our-story/`, `contact/`, `features/` | Redirects from the previous site's URLs |
 
-`CNAME` holds the custom domain for GitHub Pages. Do not delete it.
+See `DEPLOY.md` for the GitHub Pages and DNS cutover steps.
 
 © 2026 BoatMedix LLC. BoatMedix™ · Never Boat Alone™
