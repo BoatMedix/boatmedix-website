@@ -190,13 +190,17 @@ nav{background:transparent}
  .think .k,.kinds .k{padding:0 4px}
  .think .thead{grid-template-columns:1fr;gap:18px;padding:0 4px}
  .think h2{font-size:40px}.think .lead{font-size:16.5px}
- .flow{grid-template-columns:1fr;gap:30px;padding:56px 18px 24px;border-radius:32px;min-height:0}
- .flow svg.wires{display:none}
- .src ul{flex-direction:row;flex-wrap:wrap;gap:6px}
- .src li{font-size:12.5px;padding:6px 10px 6px 6px;gap:8px;border-radius:12px}
+ .flow{grid-template-columns:1fr 112px;grid-template-areas:"src core" "out out";column-gap:14px;row-gap:34px;padding:58px 14px 22px;border-radius:32px;min-height:0;align-items:center}
+ .flow .src{grid-area:src}.flow .core{grid-area:core}.flow .out{grid-area:out;padding-left:22px}
+ .flow .h{font-size:10.5px;margin-bottom:12px}
+ .src ul{gap:6px}
+ .src li{font-size:12.5px;line-height:1.25;padding:6px 8px 6px 6px;gap:8px;border-radius:11px}
  .src li .ic{width:24px;height:24px;border-radius:7px}.src li .ic svg{width:14px;height:14px}
- .core .orb{width:112px;height:112px}.core .orb::after{inset:-30px}.core .cap{margin-top:44px}
- .core .wave{height:26px}
+ .core .orb{width:96px;height:96px}.core .orb::before{inset:-10px}.core .orb::after{inset:-22px}
+ .core b{font-size:17px;margin-top:3px}.core small{font-size:10.5px}
+ .core .cap{margin-top:34px;font-size:12px;max-width:112px}
+ .core .wave{height:20px;gap:3px}.core .wave i{width:3px}
+ .hu{padding:14px 16px}.hu p{font-size:14.5px}
  .flow .demo-tag{top:16px;right:auto;left:18px}
  .think .note{font-size:12.5px;align-items:flex-start}.think .note i{margin-top:5px}
  .think .love{font-size:28px;margin-top:48px;padding:0 8px}
@@ -414,7 +418,6 @@ a.btn{text-decoration:none}
    <div class="hu" data-s="5,6,8"><div class="t"><span data-i="flag"></span>Lake &amp; Links · Places</div><p>Tee time at 9, the lake is yours by 1, and dinner at 7:30 has a courtesy dock.</p></div>
   </div></div>
  </div>
- <p class="note"><i></i>Design concept with sample data. Shows how BoatMedix is meant to work; not every source or feature shown is live yet. BoatMedix is a planning companion, not a replacement for official alerts or your own judgment on the water.</p>
  <p class="love">Less looking things up.<br><span>More time on the water with the people you love.</span></p>
 </section>
 
@@ -561,8 +564,12 @@ function build(){svg.innerHTML='';inP=[];outP=[];dots=[];if(getComputedStyle(svg
  srcs.forEach((li,i)=>{const b=li.getBoundingClientRect(),x=b.right-f.left,y=b.top+b.height/2-f.top,ex=cx-r*.92,ey=cy+(y-cy)*.18;
   const p=document.createElementNS(NS,'path');p.setAttribute('d',`M${x},${y} C${x+(ex-x)*.55},${y} ${ex-(ex-x)*.35},${ey} ${ex},${ey}`);svg.appendChild(p);inP.push(p);
   for(let k=0;k<2;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('r','2.4');c.style.opacity=0;svg.appendChild(c);dots.push({c,p,i,off:(i*.137+k*.5)%1})}});
+ const mob=matchMedia('(max-width:820px)').matches,ob=orb.closest('.core').getBoundingClientRect().bottom-f.top+6;
  hus.forEach(h=>{const b=h.getBoundingClientRect(),x=b.left-f.left,y=b.top+b.height/2-f.top,sx=cx+r*.92,sy=cy+(y-cy)*.18;
-  const p=document.createElementNS(NS,'path');p.setAttribute('d',`M${sx},${sy} C${sx+(x-sx)*.4},${sy} ${x-(x-sx)*.5},${y} ${x},${y}`);svg.appendChild(p);outP.push(p)});
+  const p=document.createElementNS(NS,'path');
+  if(mob){const gx=x-12,sb=flow.querySelector('.src').getBoundingClientRect().bottom-f.top+14;p.setAttribute('d',`M${cx},${ob} L${cx},${sb-12} Q${cx},${sb} ${cx-12},${sb} L${gx+12},${sb} Q${gx},${sb} ${gx},${sb+12} L${gx},${y-14} Q${gx},${y} ${x},${y}`)}
+  else p.setAttribute('d',`M${sx},${sy} C${sx+(x-sx)*.4},${sy} ${x-(x-sx)*.5},${y} ${x},${y}`);
+  svg.appendChild(p);outP.push(p)});
  const c=document.createElementNS(NS,'circle');c.setAttribute('r','3');svg.appendChild(c);dots.push({c,out:true});setAct(act,true)}
 function setAct(n,silent){act=n;const s=hus[n].dataset.s.split(',').map(Number);
  hus.forEach((h,i)=>h.classList.toggle('on',i===n));srcs.forEach((li,i)=>li.classList.toggle('hot',s.includes(i)));
