@@ -70,9 +70,9 @@ nav{background:transparent}
 .explain li{display:flex;gap:10px;align-items:center}.explain li svg{width:18px;height:18px;color:var(--lake)}
 .badge{position:absolute;top:24px;right:28px;font:600 11px var(--text);letter-spacing:.1em;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;display:flex;gap:7px;align-items:center}
 .badge i{width:6px;height:6px;border-radius:50%;background:var(--sun)}
-/* story module: 20-second product story */
+/* story module: product story, slowed to ~33 s so each screen can be read; tap the stage to pause */
 .story{padding:40px 0 130px}
-.sstage{position:relative;display:grid;grid-template-columns:300px 300px 1fr;gap:64px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:48px;padding:56px 64px;overflow:hidden;min-height:762px}
+.sstage{cursor:pointer;position:relative;display:grid;grid-template-columns:300px 300px 1fr;gap:64px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:48px;padding:56px 64px;overflow:hidden;min-height:762px}
 .sunbg{position:absolute;inset:0;background:url(media/hero-poster-desktop.jpg) 70% 50%/cover;opacity:0;pointer-events:none}
 .sunbg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,245,240,.55),rgba(247,245,240,.05) 40%,rgba(247,245,240,.6) 75%)}
 .sstage>*:not(.sunbg){position:relative}
@@ -90,7 +90,7 @@ nav{background:transparent}
 .scap .lbl span{font:600 11px var(--text);letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 10px;background:var(--mist);color:var(--depth)}
 .scap .lbl span.s{background:var(--sun-soft);color:#7A5A10}
 .scap>*{transition:opacity .45s ease,transform .45s ease}.scap.sw>*{opacity:0;transform:translateY(8px)}
-#story .phone iframe{height:881px}
+#story .phone iframe{height:881px;pointer-events:none}
 .sbar{display:flex;align-items:center;gap:18px;margin-top:18px;padding:0 8px}
 .sbtn{all:unset;cursor:pointer;display:flex;gap:9px;align-items:center;font:500 13.5px var(--text);color:var(--ink);border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px 7px 8px}
 .sbtn i{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}.sbtn svg{width:10px;height:10px;fill:currentColor}
@@ -384,7 +384,7 @@ a.btn{text-decoration:none}
 <section class="tag wrap"><h2>Everything boating.<br><span>Finally together.</span></h2>
 <p>The weather. The places. The music. The maps. The answers. All in one place.</p></section>
 
-<section class="story wrap" id="story" aria-label="How BoatMedix works: a 20-second story">
+<section class="story wrap" id="story" aria-label="How BoatMedix works: a 33-second story. Tap to pause.">
  <div class="sstage" id="sstage">
   <div class="sunbg" id="sunbg" aria-hidden="true"></div>
   <ol class="chap" id="chap"></ol>
@@ -392,7 +392,7 @@ a.btn{text-decoration:none}
   <div class="scap" aria-live="polite"><div class="k" id="ck"></div><h3 id="ch"></h3><p id="cp"></p><div class="lbl" id="cl"></div></div>
  </div>
  <div class="sbar"><button class="sbtn" id="splay" type="button"><i><svg viewBox="0 0 10 10" id="sico"><rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/></svg></i><span id="slbl">Pause</span></button>
- <span class="snote"><i></i>Design concept with sample data. Shows how BoatMedix is meant to work; not every feature shown is live yet.</span><span class="stime num" id="stime">0:00 / 0:20</span></div>
+ <span class="snote"><i></i>Design concept with sample data. Tap or click the story to pause and look around; not every feature shown is live yet.</span><span class="stime num" id="stime">0:00 / 0:33</span></div>
 </section>
 
 <section class="think wrap" id="different" aria-labelledby="think-h"><div class="k">What makes BoatMedix different</div>
@@ -528,7 +528,7 @@ new IntersectionObserver(e=>{if(!userPaused){e[0].isIntersecting?v.play().catch(
  [6.6,10,'Together','Everything boating. In one place.','Conditions, places, live music, maps and help, designed to work together in one calm screen.',[['BoatMedix app design',''],['Sample data','s']]],
  [10,16,'It comes to you','Relevant, right where you are.','As you move, BoatMedix brings what matters nearby to you: places, tonight’s music, Captain’s Lake Stories™, the rules for this water and Community Watch™ reports from other boaters.',[['Concept, in development','s'],['Sample data','s']]],
  [16,20,'Back to the water','Less searching. More water.','Put the phone down. BoatMedix will let you know if anything changes.',[]]];
-const REP=[1,5.3,9.2,15.4,17.8], D=20;
+const REP=[1,5.3,9.2,15.4,17.8], D=20, RATE=0.6;
 const ol=document.getElementById('chap');
 ol.innerHTML=CH.map((c,i)=>`<li><button type="button" data-i="${i}"><span class="n">0${i+1}</span>${c[2]}<span class="pr"><i></i></span></button></li>`).join('');
 const btns=[...ol.querySelectorAll('button')],bars=btns.map(b=>b.querySelector('.pr i'));
@@ -545,11 +545,12 @@ function setCap(i){if(i===cur)return;cur=i;const c=CH[i];cap.classList.add('sw')
 function draw(){const i=CH.findIndex(c=>t>=c[0]&&t<c[1]);setCap(i<0?4:i);
  bars.forEach((b,j)=>{const c=CH[j];b.style.width=(Math.min(1,Math.max(0,(t-c[0])/(c[1]-c[0])))*100)+'%'});
  sun.style.opacity=(1-sm(1.8,2.6,t))+sm(16.1,17,t);
- const s=Math.floor(t);tm.textContent=`0:${String(s).padStart(2,'0')} / 0:20`;
+ const s=Math.floor(t/RATE);tm.textContent=`0:${String(s).padStart(2,'0')} / 0:${Math.round(D/RATE)}`;
  if(ready){try{pf.contentWindow.render(t)}catch(e){pf.contentWindow.postMessage({t},'*')}}}
-function loop(n){if(play&&vis){if(last)t=(t+Math.min(.1,(n-last)/1000))%D;last=n;draw()}else last=0;requestAnimationFrame(loop)}
+function loop(n){if(play&&vis){if(last)t=(t+Math.min(.1,(n-last)/1000)*RATE)%D;last=n;draw()}else last=0;requestAnimationFrame(loop)}
 function setPlay(p){play=p;lb.textContent=p?'Pause':'Play';ico.innerHTML=p?'<rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/>':'<path d="M2 1l7 4-7 4z"/>'}
 bt.onclick=()=>setPlay(!play);
+const sst=document.getElementById('sstage');sst.addEventListener('click',e=>{if(e.target.closest('button,a'))return;setPlay(!play)});sst.title='Tap to pause or play';
 btns.forEach((b,i)=>b.onclick=()=>{t=reduce?REP[i]:CH[i][0];draw()});
 new IntersectionObserver(e=>{vis=e[0].isIntersecting},{threshold:.35}).observe(document.getElementById('sstage'));
 document.addEventListener('visibilitychange',()=>{if(document.hidden)last=0});
