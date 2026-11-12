@@ -79,7 +79,7 @@ var BMX_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyZnhVu1WeroHWmRNpHo
     var first = f.firstName.value.trim(), email = f.email.value.trim();
     if (!first) { say(ERR.first_name, 'err'); f.firstName.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say(ERR.email, 'err'); f.email.focus(); return; }
-    if (!ENDPOINT) { say('The waitlist is being connected. Please check back shortly, or email hello@boatmedix.com.', 'err'); return; }
+    if (!ENDPOINT) { say('The waitlist is being connected. Please check back shortly, or email info@boatmedix.com.', 'err'); return; }
     var body = {
       firstName: first, email: email,
       location: f.location.value.trim(), comment: f.comment.value.trim(),
@@ -131,7 +131,7 @@ var BMX_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyZnhVu1WeroHWmRNpHo
     var first = [['business', !v('business')], ['contact', !v('contact')], ['email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))], ['based', !v('based')], ['type', !v('type')], ['specialties', !specs.length]]
       .filter(function (x) { return x[1]; })[0];
     if (first) { say(ERR[first[0]], 'err'); var el = f[first[0]]; if (el && el.focus) el.focus(); else if (el && el[0]) el[0].focus(); return; }
-    if (!ENDPOINT) { say('Registration is being connected. Please check back shortly, or email hello@boatmedix.com.', 'err'); return; }
+    if (!ENDPOINT) { say('Registration is being connected. Please check back shortly, or email info@boatmedix.com.', 'err'); return; }
     var body = {
       kind: 'pro', business: v('business'), contact: v('contact'), email: v('email'), phone: v('phone'), site: v('site'),
       based: v('based'), type: v('type'), specialties: specs, years: v('years'), quals: v('quals'), remote: radio('remote'),
@@ -147,7 +147,7 @@ var BMX_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyZnhVu1WeroHWmRNpHo
         var d = document.getElementById('pro-done');
         d.querySelector('h3').textContent = res.status === 'already' ? 'You’re already registered.' : 'Thank you, ' + body.contact.split(' ')[0] + '.';
         d.querySelector('p').textContent = res.status === 'already'
-          ? 'We already have a registration for ' + body.email + '. Nothing more to do. To update your details, email hello@boatmedix.com.'
+          ? 'We already have a registration for ' + body.email + '. Nothing more to do. To update your details, email info@boatmedix.com.'
           : 'Your interest in the Marine Pro Network is registered. ' + (res.emailed ? 'A confirmation is on its way to ' + body.email + '. ' : '') + 'We’ll be in touch as the network gets ready. Nothing is booked or charged.';
         form.hidden = true; d.hidden = false; d.focus(); d.scrollIntoView({ block: 'center' });
       })

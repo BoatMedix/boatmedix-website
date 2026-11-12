@@ -51,4 +51,16 @@ and add the Turnstile widget to the form; the script verifies it automatically w
 ## Limits
 
 Google Workspace accounts can send about 1,500 emails per day from Apps Script. The confirmation
-email is sent from hello@boatmedix.com with the name "BoatMedix".
+email is sent from the Google account that owns the script (hello@boatmedix.com) with the name "BoatMedix".
+Replies go to info@boatmedix.com.
+
+## Where inquiries arrive
+
+Every new waitlist signup and Marine Pro registration is emailed to **info@boatmedix.com**
+(`NOTIFY_TO` in `Code.gs`). Hitting Reply answers the person directly. Switch it off with
+**Email me new signups** on the Settings tab. Website contact forms (dealers, manufacturers,
+Dock & Dine) and the Support link also go to info@boatmedix.com.
+
+**After changing `Code.gs`:** paste it into the Apps Script editor, save, then
+**Deploy > Manage deployments > Edit > Version: New version > Deploy** (the URL stays the same).
+Run **BoatMedix > Send a test confirmation to me** to check that info@ receives the test notification.

@@ -4,7 +4,7 @@ Static site for **www.boatmedix.com**, served by GitHub Pages from the `main` br
 
 - No build step, no framework, no server: plain HTML, CSS and JavaScript.
 - The mobile app, Captain, APIs and backend live in separate repositories and are not part of this site. `app.boatmedix.com` is hosted separately.
-- Forms open a pre-addressed email to hello@boatmedix.com; nothing is stored on this site.
+- Forms open a pre-addressed email to info@boatmedix.com; nothing is stored on this site.
 
 ## Editing
 

@@ -21,7 +21,8 @@ var CFG = {
   SHEET: 'Waitlist',
   SETTINGS: 'Settings',
   FROM_NAME: 'BoatMedix',
-  REPLY_TO: 'hello@boatmedix.com',
+  REPLY_TO: 'info@boatmedix.com',
+  NOTIFY_TO: 'info@boatmedix.com',   // every new signup and Marine Pro registration is emailed here
   CONSENT_VERSION: 'crew-2026-11-08',
   MARKETING_TEXT: 'Yes, send me BoatMedix launch updates and occasional news. I can unsubscribe at any time.',
   SHARE_TEXT: 'BoatMedix may publicly share my first name, general location and comment on its website and social channels.',
@@ -111,6 +112,10 @@ function doPost(e) {
     catch (err) { mailStatus = 'Failed: ' + String(err).slice(0, 80); }
   }
   sheet.getRange(row, COL['Confirmation email']).setValue(mailStatus);
+  try { notifyTeam_('New waitlist signup: ' + first, [
+    ['First name', first], ['Email', email], ['Home lake / location', place], ['Excited about', comment],
+    ['Marketing updates', marketing ? 'Yes' : 'No'], ['Share publicly', share ? 'Yes' : 'No'], ['Source page', page],
+    ['Confirmation email', mailStatus]], email); } catch (err) {}
   clearFeed_();
   return json_({ ok: true, status: 'joined', emailed: mailStatus === 'Sent' });
 }
@@ -210,6 +215,10 @@ function proPost_(d) {
     catch (err) { mail = 'Failed: ' + String(err).slice(0, 80); }
   }
   sh.getRange(row, PCOL['Confirmation email']).setValue(mail);
+  try { notifyTeam_('New Marine Pro registration: ' + r.business, [
+    ['Business', r.business], ['Contact', r.contact], ['Email', r.email], ['Phone', r.phone], ['Website', r.site],
+    ['Based in', r.based], ['Type', r.type], ['Specialties', r.specialties], ['Notes', r.notes],
+    ['Confirmation email', mail]], r.email); } catch (err) {}
   return json_({ ok: true, status: 'joined', emailed: mail === 'Sent' });
 }
 
@@ -243,6 +252,17 @@ function sendProConfirmation_(email, contact, business) {
 function oneOf_(v, list) { v = str_(v); return list.indexOf(v) >= 0 ? v : ''; }
 
 /* ------------------------------ Email --------------------------------- */
+
+// Emails the BoatMedix team (CFG.NOTIFY_TO) about each new signup.
+// Reply-To is the person who signed up, so hitting Reply answers them directly.
+function notifyTeam_(subject, rows, replyTo) {
+  if (!CFG.NOTIFY_TO || !setting_('Email me new signups', true)) return;
+  var plain = rows.map(function (r) { return r[0] + ': ' + (r[1] || '\u2014'); }).join('\n');
+  var html = '<table style="font:15px/1.5 Arial,sans-serif;color:#012851;border-collapse:collapse">' + rows.map(function (r) {
+    return '<tr><td style="padding:4px 14px 4px 0;font-weight:bold;vertical-align:top">' + esc_(r[0]) + '</td><td style="padding:4px 0">' + esc_(r[1] || '\u2014') + '</td></tr>';
+  }).join('') + '</table>';
+  MailApp.sendEmail({ to: CFG.NOTIFY_TO, subject: subject, body: plain, htmlBody: html, name: 'BoatMedix Website', replyTo: replyTo || CFG.REPLY_TO });
+}
 
 function sendConfirmation_(email, first, marketing, share) {
   var name = esc_(first);
@@ -289,18 +309,30 @@ function setup() {
   sh.getRange(1, COL['Approve for website']).setBackground('#2E8C86');
   var st = ss.getSheetByName(CFG.SETTINGS) || ss.insertSheet(CFG.SETTINGS);
   if (st.getLastRow() < 2) {
-    st.getRange(1, 1, 4, 3).setValues([
+    st.getRange(1, 1, 5, 3).setValues([
       ['Setting', 'Value', 'What it does'],
       ['Show signup count on website', false, 'Tick to show "N boaters have joined the crew!" on the homepage. The number always comes from this sheet.'],
       ['Minimum count before showing', 25, 'The count stays hidden until real signups reach this number.'],
-      ['Send confirmation email', true, 'Sends a short welcome email from this account after each new signup.']
+      ['Send confirmation email', true, 'Sends a short welcome email from this account after each new signup.'],
+      ['Email me new signups', true, 'Emails info@boatmedix.com about every new signup and Marine Pro registration.']
     ]);
     st.getRange(1, 1, 1, 3).setFontWeight('bold');
     st.getRange(2, 2).insertCheckboxes();
     st.getRange(4, 2).insertCheckboxes();
     st.getRange(2, 2).setValue(false);
     st.getRange(4, 2).setValue(true);
+    st.getRange(5, 2).insertCheckboxes();
+    st.getRange(5, 2).setValue(true);
     st.setColumnWidth(1, 240); st.setColumnWidth(3, 520);
+  } else {
+    // Existing sheet: add the new-signup email switch if it isn't there yet.
+    var keys = st.getRange(2, 1, st.getLastRow() - 1, 1).getValues().map(function (r) { return r[0]; });
+    if (keys.indexOf('Email me new signups') < 0) {
+      var n = st.getLastRow() + 1;
+      st.getRange(n, 1, 1, 3).setValues([['Email me new signups', true, 'Emails info@boatmedix.com about every new signup and Marine Pro registration.']]);
+      st.getRange(n, 2).insertCheckboxes();
+      st.getRange(n, 2).setValue(true);
+    }
   }
   setupPros_();
   var def = ss.getSheetByName('Sheet1');
@@ -313,6 +345,7 @@ function refreshWebsite() { clearFeed_(); }
 function testEmail() {
   var me = Session.getActiveUser().getEmail();
   sendConfirmation_(me, 'Allison', true, true);
+  notifyTeam_('TEST: new waitlist signup notification', [['First name', 'Test'], ['Email', me], ['Note', 'This is a test from the BoatMedix waitlist script.']], me);
 }
 
 /* ------------------------------ Helpers -------------------------------- */
