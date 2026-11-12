@@ -4,7 +4,7 @@ html,body{background:#F7F5F0} body{min-width:0;overflow-x:clip}
 .wrap{width:1240px;margin:0 auto}
 nav{height:84px;display:flex;align-items:center;justify-content:space-between;width:1240px;margin:0 auto;position:relative;z-index:5}
 nav img{height:40px}
-nav ul{display:flex;gap:36px;list-style:none;font:500 15px var(--text);color:var(--ink-2)}
+nav ul{display:flex;gap:26px;list-style:none;font:500 15px var(--text);color:var(--ink-2)}
 .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font:600 15px var(--display);letter-spacing:-.005em}
 .btn svg{width:18px;height:18px}
 .b-ink{background:var(--navy);color:#fff}.b-ghost{background:rgba(255,255,255,.7);color:var(--ink);border:1px solid var(--line)}
@@ -111,7 +111,7 @@ nav{background:transparent}
 /* boaters */
 /* what makes BoatMedix different: Captain thinks ahead */
 .think{padding:30px 0 130px}
-.think .k,.kinds .k,.ll .k{font:600 13px var(--text);letter-spacing:.14em;color:var(--lake);text-transform:uppercase}
+.think .k,.kinds .k,.know .k,.ll .k{font:600 13px var(--text);letter-spacing:.14em;color:var(--lake);text-transform:uppercase}
 .think .thead{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:16px}
 .think h2{font:600 60px/1.0 var(--display);letter-spacing:-.04em}
 .think h2 span{color:var(--lake)}
@@ -251,7 +251,7 @@ footer img{height:36px}
 .brand .tg{position:relative;align-self:center;margin-top:calc(var(--ih)*.13);padding-left:.09em;transform:translateX(calc(var(--ih)*-.0956));font:700 calc(var(--ih)*.265)/1 'Plus Jakarta Sans',var(--display);letter-spacing:.09em;color:var(--navy);white-space:nowrap}
 .brand .tg sup{position:absolute;left:100%;top:-.15em;font-size:.6em;margin-left:.05em;letter-spacing:0}
 footer .brand{--ih:36px}
-nav ul a{color:inherit;text-decoration:none}nav ul a:hover{color:var(--ink)}nav a.btn{text-decoration:none}footer .links{display:flex;gap:18px}footer .links a{color:inherit;text-decoration:none}footer .links a:hover{color:var(--ink)}.founder a{text-decoration:none}
+nav ul a{color:inherit;text-decoration:none}nav ul a:hover{color:var(--ink)}nav a.btn{text-decoration:none}footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px}footer .links a{white-space:nowrap}footer .links a{color:inherit;text-decoration:none}footer .links a:hover{color:var(--ink)}.founder a{text-decoration:none}
 .menu{display:none}.mnav{display:none}
 @media (max-width:820px){nav .b-sm{display:none}
  .menu{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.7);font:600 14px var(--display);color:var(--ink);cursor:pointer}
@@ -432,6 +432,44 @@ a.btn{text-decoration:none}
   <div class="kr"><b>Cruisers &amp; watersports</b><div class="w"><small>Captain is watching</small>Fuel, docks and water conditions</div><q>The north shore is glassy until eleven, and there’s a fuel dock just around the corner.</q></div>
   <div class="kr"><b>First-time boaters</b><div class="w"><small>Captain is watching</small>Markers, rules and help at any hour</div><q>Keep the red buoys on your right heading back in. If anything feels off, I can reach a mechanic.</q></div>
  </div></section>
+
+<section class="know wrap" id="captain-knows" aria-labelledby="know-h"><div class="k">Captain gets to know you</div>
+ <h3 id="know-h">Your kind of boating. <span>Your water. Your call.</span></h3>
+ <p class="kl">Tell Captain how you like to spend the day. It plans ahead from there.</p>
+ <div class="flw">
+  <div class="fc"><span class="ic" data-i="boat"></span><b>Your boat</b><span>Make, model, engine.</span></div>
+  <div class="fc"><span class="ic" data-i="fish"></span><b>How you boat</b><span>Fishing, cruising, sandbars, music.</span></div>
+  <div class="fc"><span class="ic" data-i="pin"></span><b>Your waters</b><span>The lakes you call home.</span></div>
+  <span class="ar" data-i="arrow"></span>
+  <div class="fc go"><span class="ic" data-i="captain"></span><b>Captain thinks ahead</b><span>The right forecast, places and heads-ups for your day.</span></div>
+ </div>
+ <div class="tru">
+  <div><span data-i="check"></span>Only what you share</div>
+  <div><span data-i="check"></span>Kept on your phone</div>
+  <div><span data-i="check"></span>Change it anytime</div>
+  <div><span data-i="check"></span>Never sold</div>
+ </div>
+ <p class="note kn"><i></i>Captain is being tested now. Shown as designed.</p>
+</section>
+<style>
+.know{padding:0 0 110px}
+.know h3{font:600 48px/1.05 var(--display);letter-spacing:-.035em;margin-top:16px;max-width:820px}.know h3 span{color:var(--lake)}
+.know .kl{font:400 19px/1.5 var(--text);color:var(--ink-2);margin-top:18px;max-width:560px}
+.know .kn{margin-top:20px}
+.flw{display:grid;grid-template-columns:1fr 1fr 1fr auto 1.15fr;gap:16px;align-items:stretch;margin-top:52px}
+.flw .fc{background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.flw .fc .ic{width:52px;height:52px;border-radius:16px;background:var(--mist);display:grid;place-items:center;color:var(--depth)}.flw .fc .ic svg{width:26px;height:26px}
+.flw .fc b{font:600 21px/1.15 var(--display);letter-spacing:-.02em}.flw .fc span{font:400 15.5px/1.45 var(--text);color:var(--ink-2)}
+.flw .ar{display:grid;place-items:center;color:var(--lake)}.flw .ar svg{width:30px;height:30px}
+.flw .fc.go{background:var(--ink);border-color:var(--ink);color:#fff}.flw .fc.go .ic{background:rgba(143,211,200,.16);color:var(--shallows)}.flw .fc.go span{color:rgba(255,255,255,.72)}
+.tru{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.tru div{display:flex;gap:12px;align-items:center;background:var(--mist);border-radius:18px;padding:16px 18px;font:600 15.5px/1.3 var(--display);color:var(--ink)}
+.tru svg{width:22px;height:22px;flex:none;color:var(--lake)}
+.dark .tru div{background:rgba(255,255,255,.06);color:#fff}.dark .tru svg{color:var(--shallows)}
+ @media (max-width:820px){.flw{grid-template-columns:1fr;gap:12px;margin-top:30px}.flw .ar{transform:rotate(90deg);height:30px}.tru{grid-template-columns:1fr;gap:10px}}
+.know .note{display:inline-flex;gap:8px;align-items:center;font:400 13.5px var(--text);color:var(--ink-2)}.know .note i{width:7px;height:7px;border-radius:50%;background:var(--sun);flex:none}
+@media (max-width:820px){.know.wrap{width:auto;padding-left:16px;padding-right:16px}.know{padding:0 0 80px}.know .k{padding:0 4px}.know h3{font-size:32px;padding:0 4px}.know .kl{font-size:16.5px;padding:0 4px}}
+</style>
 
 <section class="llwrap wrap" aria-labelledby="ll-h"><div class="ll">
  <div class="tagp"><i></i>DESIGN CONCEPT · SAMPLE DATA</div>

@@ -45,7 +45,7 @@
   <label>Your name<input name="name" required></label><label>Dealership<input name="dealership" required></label>
   <label>Email<input name="email" type="email" required></label><label>Where you are<input name="location" placeholder="Town, state"></label>
   <label class="full">What you sell and service<textarea name="body" placeholder="Brands, boat types, roughly how many boats a year"></textarea></label>
-  <div class="act"><button class="btn b-lake" type="submit">Send</button><span class="note" style="color:rgba(255,255,255,.6)"><i></i>Opens an email to hello@boatmedix.com. No data is stored on this site.</span></div>
+  <div class="act"><button class="btn b-lake" type="submit">Send</button><span class="note"><i></i>Opens an email to hello@boatmedix.com. No data is stored on this site.</span></div>
  </form></div></section>
 <script>window.bmxSend=function(f){var b='Name: '+f.name.value+'\nDealership: '+f.dealership.value+'\nEmail: '+f.email.value+'\nLocation: '+f.location.value+'\n\n'+f.body.value;location.href='mailto:hello@boatmedix.com?subject='+encodeURIComponent('Dealer partnership — '+f.dealership.value)+'&body='+encodeURIComponent(b);return false}</script>
 <footer data-site></footer>
