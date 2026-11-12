@@ -111,6 +111,7 @@ nav{background:transparent}
 /* boaters */
 /* what makes BoatMedix different: Captain thinks ahead */
 .think{padding:30px 0 130px}
+.hero+.think{padding-top:120px}
 .think .k,.kinds .k,.know .k,.ll .k{font:600 13px var(--text);letter-spacing:.14em;color:var(--lake);text-transform:uppercase}
 .think .thead{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end;margin-top:16px}
 .think h2{font:600 60px/1.0 var(--display);letter-spacing:-.04em}
@@ -189,7 +190,7 @@ nav{background:transparent}
 }
 @media (max-width:820px){
  .think.wrap,.kinds.wrap,.llwrap.wrap{width:auto;padding-left:16px;padding-right:16px}
- .think{padding:10px 0 80px}
+ .think{padding:10px 0 80px} .hero+.think{padding-top:64px}
  .think .k,.kinds .k{padding:0 4px}
  .think .thead{grid-template-columns:1fr;gap:18px;padding:0 4px}
  .think h2{font-size:40px}.think .lead{font-size:16.5px}
@@ -381,20 +382,6 @@ a.btn{text-decoration:none}
  </div>
 </section>
 
-<section class="tag wrap"><h2>Everything boating.<br><span>Finally together.</span></h2>
-<p>The weather. The places. The music. The maps. The answers. All in one place.</p></section>
-
-<section class="story wrap" id="story" aria-label="How BoatMedix works: a 33-second story. Tap to pause.">
- <div class="sstage" id="sstage">
-  <div class="sunbg" id="sunbg" aria-hidden="true"></div>
-  <ol class="chap" id="chap"></ol>
-  <div class="phone"><div class="s"><span class="island"></span><iframe id="pf" src="phone.html" title="BoatMedix app concept with sample data" tabindex="-1" aria-hidden="true" loading="lazy"></iframe></div></div>
-  <div class="scap" aria-live="polite"><div class="k" id="ck"></div><h3 id="ch"></h3><p id="cp"></p><div class="lbl" id="cl"></div></div>
- </div>
- <div class="sbar"><button class="sbtn" id="splay" type="button"><i><svg viewBox="0 0 10 10" id="sico"><rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/></svg></i><span id="slbl">Pause</span></button>
- <span class="snote"><i></i>Design concept with sample data. Tap or click the story to pause and look around; not every feature shown is live yet.</span><span class="stime num" id="stime">0:00 / 0:33</span></div>
-</section>
-
 <section class="think wrap" id="different" aria-labelledby="think-h"><div class="k">What makes BoatMedix different</div>
  <div class="thead"><h2 id="think-h">Captain thinks ahead,<br><span>so you don’t have to.</span></h2>
  <p class="lead">Information used to be something you went looking for. BoatMedix brings the marine information that matters into one place: <b>weather and radar, wind and water, official alerts, fishing rules, waterfront places, fuel and marine help.</b> Captain, the AI built into BoatMedix, reads it together and answers in plain language. Heads-ups before you ask, and reports from other boaters, are planned next.</p></div>
@@ -566,42 +553,6 @@ prog.addEventListener('click',e=>seek(e.clientX));prog.addEventListener('keydown
 new IntersectionObserver(e=>{if(!userPaused){e[0].isIntersecting?v.play().catch(()=>{}):v.pause()}},{threshold:.2}).observe(frame);
 })();
 
-(()=>{const CH=[
- [0,2.2,'Sunrise','It starts with a beautiful morning.','And a few questions. Will it storm? Where can we eat? Who’s playing tonight?',[]],
- [2.2,6.6,'Before','Eight apps to plan one afternoon.','Forecasts, radar, searches, event pages, depth charts, rulebooks and phone numbers, all in different places.',[['Illustrative','']]],
- [6.6,10,'Together','Everything boating. In one place.','Conditions, places, live music, maps and help, designed to work together in one calm screen.',[['BoatMedix app design',''],['Sample data','s']]],
- [10,16,'It comes to you','Relevant, right where you are.','As you move, BoatMedix brings what matters nearby to you: places, tonight’s music, Captain’s Lake Stories™, the rules for this water and, when it launches, Community Watch™ reports from other boaters.',[['Concept, in development','s'],['Sample data','s']]],
- [16,20,'Back to the water','Less searching. More water.','Put the phone down. BoatMedix will let you know if anything changes.',[]]];
-const REP=[1,5.3,9.2,15.4,17.8], D=20, RATE=0.6;
-const ol=document.getElementById('chap');
-ol.innerHTML=CH.map((c,i)=>`<li><button type="button" data-i="${i}"><span class="n">0${i+1}</span>${c[2]}<span class="pr"><i></i></span></button></li>`).join('');
-const btns=[...ol.querySelectorAll('button')],bars=btns.map(b=>b.querySelector('.pr i'));
-const cap=document.querySelector('.scap'),ck=document.getElementById('ck'),ch=document.getElementById('ch'),cp=document.getElementById('cp'),cl=document.getElementById('cl');
-const pf=document.getElementById('pf'),sun=document.getElementById('sunbg'),tm=document.getElementById('stime');
-const bt=document.getElementById('splay'),lb=document.getElementById('slbl'),ico=document.getElementById('sico');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let t=0,play=!reduce,vis=false,last=0,cur=-1,ready=false;
-pf.addEventListener('load',()=>{ready=true;draw()});
-const sm=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
-function setCap(i){if(i===cur)return;cur=i;const c=CH[i];cap.classList.add('sw');
- setTimeout(()=>{ck.textContent=`0${i+1} · ${c[2]}`;ch.textContent=c[3];cp.textContent=c[4];cl.innerHTML=c[5].map(l=>`<span class="${l[1]}">${l[0]}</span>`).join('');cap.classList.remove('sw')},cur<0?0:220);
- btns.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-current',j===i?'step':'false')})}
-function draw(){const i=CH.findIndex(c=>t>=c[0]&&t<c[1]);setCap(i<0?4:i);
- bars.forEach((b,j)=>{const c=CH[j];b.style.width=(Math.min(1,Math.max(0,(t-c[0])/(c[1]-c[0])))*100)+'%'});
- sun.style.opacity=(1-sm(1.8,2.6,t))+sm(16.1,17,t);
- const s=Math.floor(t/RATE);tm.textContent=`0:${String(s).padStart(2,'0')} / 0:${Math.round(D/RATE)}`;
- if(ready){try{pf.contentWindow.render(t)}catch(e){pf.contentWindow.postMessage({t},'*')}}}
-function loop(n){if(play&&vis){if(last)t=(t+Math.min(.1,(n-last)/1000)*RATE)%D;last=n;draw()}else last=0;requestAnimationFrame(loop)}
-function setPlay(p){play=p;lb.textContent=p?'Pause':'Play';ico.innerHTML=p?'<rect x="1.5" y="1" width="2.4" height="8" rx=".6"/><rect x="6.1" y="1" width="2.4" height="8" rx=".6"/>':'<path d="M2 1l7 4-7 4z"/>'}
-bt.onclick=()=>setPlay(!play);
-const sst=document.getElementById('sstage');sst.addEventListener('click',e=>{if(e.target.closest('button,a'))return;setPlay(!play)});sst.title='Tap to pause or play';
-btns.forEach((b,i)=>b.onclick=()=>{t=reduce?REP[i]:CH[i][0];draw()});
-new IntersectionObserver(e=>{vis=e[0].isIntersecting},{threshold:.35}).observe(document.getElementById('sstage'));
-document.addEventListener('visibilitychange',()=>{if(document.hidden)last=0});
-if(reduce){t=REP[2];setPlay(false)}
-window.__storySet=x=>{setPlay(false);t=x;draw()};
-draw();requestAnimationFrame(loop);
-})();
 </script><script>(function(){var mb=document.querySelector('.menu'),mn=document.querySelector('.mnav');if(mb)mb.addEventListener('click',function(){var o=mn.classList.toggle('open');mb.setAttribute('aria-expanded',o)})})();</script><script>(function(){
 const flow=document.getElementById('flow'),svg=document.getElementById('wires');if(!flow)return;
 const srcs=[...document.querySelectorAll('#srcs li')],hus=[...document.querySelectorAll('#hus .hu')],orb=document.getElementById('orb');
