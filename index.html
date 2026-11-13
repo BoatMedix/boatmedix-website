@@ -528,7 +528,7 @@ a.btn{text-decoration:none}
 (()=>{const v=document.getElementById('film'),frame=document.getElementById('frame'),btn=document.getElementById('pause'),lbl=document.getElementById('plbl'),ico=document.getElementById('pico'),snd=document.getElementById('snd'),snd2=document.getElementById('snd2'),slbl=document.getElementById('slbl2'),prog=document.getElementById('prog'),bar=document.getElementById('pbar'),tm=document.getElementById('ftime');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,save=navigator.connection&&navigator.connection.saveData;
 const small=Math.min(screen.width,screen.height)*(devicePixelRatio||1)<1000||(navigator.connection&&/2g|3g/.test(navigator.connection.effectiveType||''));
-const mobileFilm='media/film-720.mp4?v=44',fullFilm='media/film-v44/index.m3u8?v=44';
+const mobileFilm='media/film-720.mp4?v=45',fullFilm='media/film-v45/index.m3u8?v=45';
 let filmStream=null;
 function useMobileFilm(){const time=Number.isFinite(v.currentTime)?v.currentTime:0,wasPlaying=!v.paused;if(filmStream){filmStream.destroy();filmStream=null}v.dataset.delivery='mp4';v.src=mobileFilm;v.addEventListener('loadedmetadata',()=>{v.currentTime=Math.min(time,v.duration);if(wasPlaying)v.play().catch(()=>{})},{once:true})}
 if(small){v.dataset.delivery='mp4';v.src=mobileFilm}
