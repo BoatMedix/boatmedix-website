@@ -14,7 +14,7 @@ Change the HTML files and push to `main`. GitHub Pages republishes within a minu
 |---|---|
 | `index.html` | Home — hero film "A Day on the Water", product story, plans |
 | `boaters.html` | For Boaters |
-| `dealers.html` | For Dealers (contact form) |
+| `dealers.html` | Redirects to the home page (dealer page removed) |
 | `story.html` | Our Story |
 | `get.html` | Get BoatMedix |
 | `404.html` | Not-found page |
