@@ -48,6 +48,14 @@ nav{background:transparent}
 }
 @media (prefers-reduced-motion:reduce){.hero .copy>*{animation:none}}
 /* tagline */
+.appsoon{width:min(100vw - 48px,1240px);margin:0 auto;padding:30px 0 0;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.appsoon .k2{font:600 13px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--lake);margin-right:6px}
+.appsoon .st{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px 0 18px;border-radius:16px;background:var(--navy);color:#fff;cursor:default;user-select:none}
+.appsoon .st svg{width:26px;height:26px;fill:currentColor;flex:none}
+.appsoon .st span{display:flex;flex-direction:column;line-height:1.1}
+.appsoon .st small{font:500 11px var(--text);letter-spacing:.04em;opacity:.8}
+.appsoon .st b{font:600 18px var(--display);letter-spacing:-.01em}
+@media (max-width:820px){.appsoon{padding:18px 20px 0;gap:10px}.appsoon .k2{width:100%;text-align:center;margin:0 0 4px}.appsoon .st{height:52px;padding:0 16px 0 14px}.appsoon .st b{font-size:16px}}
 .tag{padding:120px 0 40px;text-align:center}
 .tag h2{font:600 64px/1.02 var(--display);letter-spacing:-.04em}
 .tag h2 span{color:var(--lake)}
@@ -386,6 +394,11 @@ a.btn{text-decoration:none}
    <button class="b" id="pause" type="button" aria-pressed="false"><svg id="pico" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span id="plbl">Pause</span></button>
    <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="328" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 5:28</span></div>
   </div>
+ </div>
+ <div class="appsoon" role="note" aria-label="Coming soon to Apple and Android">
+  <span class="k2">Coming soon</span>
+  <span class="st" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span><small>Download on</small><b>Apple</b></span></span>
+  <span class="st" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg><span><small>Download on</small><b>Android</b></span></span>
  </div>
  <div class="copy">
   <h1>A day on the water, with Captain.</h1>
