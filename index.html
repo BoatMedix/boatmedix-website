@@ -379,12 +379,12 @@ a.btn{text-decoration:none}
 
 <section class="hero" aria-label="BoatMedix film: a day on the water">
  <div class="frame" id="frame">
-  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 5 minutes 9 seconds"></video>
+  <video id="film" muted loop playsinline preload="metadata" poster="media/film-poster.jpg" aria-label="A Day on the Water — the BoatMedix film, 5 minutes 28 seconds"></video>
   <div class="edge" aria-hidden="true"></div>
   <div class="ctl">
    <button class="b sound" id="snd" type="button" aria-pressed="false"><svg id="sico" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span id="slbl2">Watch with sound</span></button>
    <button class="b" id="pause" type="button" aria-pressed="false"><svg id="pico" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span id="plbl">Pause</span></button>
-   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="309" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 5:09</span></div>
+   <div class="tray"><div class="prog" id="prog" role="slider" aria-label="Film position" aria-valuemin="0" aria-valuemax="328" aria-valuenow="0" tabindex="0"><i id="pbar"></i></div><span class="num" id="ftime">0:00 / 5:28</span></div>
   </div>
  </div>
  <div class="copy">
@@ -528,7 +528,7 @@ a.btn{text-decoration:none}
 (()=>{const v=document.getElementById('film'),frame=document.getElementById('frame'),btn=document.getElementById('pause'),lbl=document.getElementById('plbl'),ico=document.getElementById('pico'),snd=document.getElementById('snd'),snd2=document.getElementById('snd2'),slbl=document.getElementById('slbl2'),prog=document.getElementById('prog'),bar=document.getElementById('pbar'),tm=document.getElementById('ftime');
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,save=navigator.connection&&navigator.connection.saveData;
 const small=Math.min(screen.width,screen.height)*(devicePixelRatio||1)<1000||(navigator.connection&&/2g|3g/.test(navigator.connection.effectiveType||''));
-const mobileFilm='media/film-720.mp4?v=45',fullFilm='media/film-v45/index.m3u8?v=45';
+const mobileFilm='media/film-720.mp4?v=46',fullFilm='media/film-v46/index.m3u8?v=46';
 let filmStream=null;
 function useMobileFilm(){const time=Number.isFinite(v.currentTime)?v.currentTime:0,wasPlaying=!v.paused;if(filmStream){filmStream.destroy();filmStream=null}v.dataset.delivery='mp4';v.src=mobileFilm;v.addEventListener('loadedmetadata',()=>{v.currentTime=Math.min(time,v.duration);if(wasPlaying)v.play().catch(()=>{})},{once:true})}
 if(small){v.dataset.delivery='mp4';v.src=mobileFilm}
